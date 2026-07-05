@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/interactive-card.css">
+
+    <title> Fabalu's World </title>     
+    </head>
+
+    <body>
+
+        <br>
+        <br>
+        <div class="blog-container">
+            <h2 style="text-align: center; color:white; margin-top: 10px;">Scientific article scratches I wrote in German</h2>
+            <div class="blog-scroll">
+   
+            </div>        
+        </div>
+
+        <div class="blog-popup" id="blog-popup">
+            <div class="header">
+                <div class="title"></div>
+                <button data-close-button class="close-button" onclick="OnClosePopup()">&times;</button>
+            </div>
+            <div class="content"></div>
+        </div>
+
+        <div class="overlay" id="overlay"></div>
+        <script defer src="index.js"></script>
+    </body>
+</html>
+
+<body>
+        <template id="blog-card">
+            <div class="card">
+                <img src="https://i.imgur.com/IGgrn2e.jpeg" class="image-url">
+                <div class="card-content">
+                    <h3 class="header">Card 1</h3>
+                    <h2 class="index">1.</h3>
+                    <p class="short-content">Everyone needs to know this boi!</p>
+                    <a href="" class="btn">Read More</a>
+                    <div class="icons">
+                        <span> <i class="fas fa-calendar"></i> <span class="date"> </span></span>
+                        <span> <i class="fas fa-user"></i> Fabalu </span>
+                     </div>  
+                </div>
+            </div>
+        </template>
+
+        <template id="interactive-card">
+            <div class="box">
+                <div class="image">
+                   <img src="data/blogs/Blog1.png" alt="">
+                </div>
+                <div class="content">
+                   <h3>Der Platz Der Literatur Im Normalen Leben</h3>
+                   <p>Heutezutage Benutzen Wir Englisch An Jedem Platz...</p>
+                   <a href="#" class="btn">read more</a>
+                   <div class="icons">
+                      <span> <i class="fas fa-calendar"></i> <span class="date"></span> </span>
+                      <span> <i class="fas fa-user"></i> by admin </span>
+                   </div>
+                </div>
+             </div>
+        </template>   
+</body>
