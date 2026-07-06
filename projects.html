@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Selected projects by Furkan 'Fabalu' Özkan — game engines, UAVs, smart-home hardware and more.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=5">
+
+    <title>Projects — Fabalu's World</title>
+</head>
+
+<body class="page-projects">
+
+    <nav class="site-nav">
+        <div class="inner">
+            <a class="brand" href="index.html">Fabalu's <span>World</span></a>
+            <div class="links">
+                <a href="index.html">Portfolio</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="scratches.html">Funny Corner</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <span class="eyebrow">selected work</span>
+            <h1>Things I <span class="grad">built</span>.</h1>
+            <p class="sub">Game engines, an autonomous UAV, smart-home hardware, shipped games. A mix of shipped, soldered and slightly unhinged — click any card for the full story.</p>
+        </div>
+    </header>
+
+    <main class="container" id="projects">
+        <div class="post-grid"></div>
+        <div class="empty-state" hidden>Projects are loading…</div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="icons">
+            <a href="https://www.youtube.com/@fabalu7666" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/fabalu/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://fabalu.itch.io" aria-label="itch.io"><i class="fab fa-itch-io"></i></a>
+        </div>
+        © 2026 Furkan Özkan — Bursa &amp; Rosenheim. Also on the <a href="blog.html">blog</a> and in the <a href="scratches.html">Funny Corner</a>.
+    </footer>
+
+    <template id="project-card">
+        <a class="project-link">
+            <div class="card reveal">
+                <div class="thumb">
+                    <img alt="" loading="lazy">
+                    <span class="index"></span>
+                </div>
+                <div class="body">
+                    <div class="tags"></div>
+                    <span class="card-role"></span>
+                    <h3 class="header"></h3>
+                    <p class="excerpt"></p>
+                    <div class="meta">
+                        <span class="date-wrap"><i class="fas fa-calendar"></i><span class="date"></span></span>
+                        <span class="read"></span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </template>
+
+    <script defer src="projects.js?v=5"></script>
+</body>
+</html>

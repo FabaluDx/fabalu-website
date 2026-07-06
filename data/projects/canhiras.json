@@ -1,0 +1,42 @@
+{
+    "slug": "canhiras",
+    "title": "Canhıraş",
+    "subtitle": "An autonomous fixed-wing UAV, designed and built solo for Teknofest.",
+    "date": "2022",
+    "role": "Sole designer & builder",
+    "team": "Team Bangu · funded by Eurasia University",
+    "hero": "data/projects/canhiras/hero.jpg",
+    "tags": ["fixed-wing UAV", "SolidWorks", "avionics", "computer vision", "Teknofest"],
+    "links": [],
+    "specs": [
+        ["Configuration", "Twin-engine high-wing fixed-wing, tricycle gear"],
+        ["Payload weight", "3.5 kg (internals, airframe excluded)"],
+        ["Flight controller", "Cube Orange + Here2 GNSS"],
+        ["Onboard computer", "NVIDIA Jetson TX2 (onboard vision)"],
+        ["Camera", "Raspberry Pi HQ Camera (CMOS)"],
+        ["Propulsion", "2× SunnySky brushless · 2× Skywalker 80A ESC"],
+        ["Actuation", "2× MG996 + 3× EMAX ES08MA II metal-gear servos"],
+        ["Power", "Leopard Power 13,000 mAh 6S 22.2V LiPo"],
+        ["Data link", "Ubiquiti Rocket 5 GHz bridge (video/CV)"],
+        ["Telemetry / RC", "RFD900x modem · RadioLink R12DS receiver"]
+    ],
+    "gallery": [
+        { "src": "data/projects/canhiras/render.jpg",  "caption": "Full CAD assembly — the twin-tractor layout that defined the airframe." },
+        { "src": "data/projects/canhiras/side.jpg",     "caption": "Side profile: high wing, single vertical stabiliser, tricycle gear." },
+        { "src": "data/projects/canhiras/nose.jpg",     "caption": "Nose detail — Pi HQ camera under a carbon prop and a 3D-printed motor mount." },
+        { "src": "data/projects/canhiras/wiring.jpg",   "caption": "The full electrical schematic I drew — air segment on top, ground station below." },
+        { "src": "data/projects/canhiras/concept.jpg",  "caption": "The very first sketch: weights, servo counts and incidence angles worked out by hand." }
+    ],
+    "body": [
+        "<p><strong>Canhıraş</strong> is a twin-engine fixed-wing UAV I designed, wired and built from the ground up for Teknofest. It flew under the banner of Team Bangu, with the build funded by Eurasia University. I'll be honest about one thing up front, because it matters to how I read this project today: I built it solo. I had teammates on paper, but they were there to learn — every line of the CAD, every solder joint and every config file was mine. That was exhausting and, in hindsight, the best crash course in systems engineering I could have asked for.</p>",
+        "<h2>The airframe</h2>",
+        "<p>I modelled the entire aircraft in SolidWorks: a high-wing layout with two wing-mounted tractor motors, a single vertical stabiliser and tricycle landing gear for hand-off runway takeoffs. The twin-engine choice wasn't for show — it gave me thrust redundancy and kept the nose clear for a downward-and-forward-looking camera. The internal payload came in at about <strong>3.5&nbsp;kg</strong> before the airframe itself, so a lot of the design work was fighting for grams and balancing the CG around a heavy nose camera and a mid-mounted battery.</p>",
+        "<h2>The nervous system</h2>",
+        "<p>Flight control runs on a <strong>Cube Orange</strong> with a Here2 GNSS puck — stabilisation, waypoint navigation and failsafes. Sitting alongside it is the part I'm proudest of: an <strong>NVIDIA Jetson TX2</strong> as a companion computer, so the aircraft could run computer vision <em>onboard</em> instead of shipping every frame to the ground. A <strong>Raspberry Pi HQ camera</strong> feeds it. Power comes from a 6S 13,000&nbsp;mAh LiPo through a power-distribution board, an arming switch and a buck regulator that drops the pack down to clean 5V for the companion computer and servos. Two SunnySky motors on Skywalker 80A ESCs do the pulling; MG996 and EMAX metal-gear servos move the surfaces.</p>",
+        "<p>The schematic in the gallery is one I drew by hand, node by node — it splits into the <em>air</em> segment and the <em>ground</em> segment. Drawing it was how I actually understood the aircraft: you can't wire 20 components blind and hope.</p>",
+        "<h2>Eyes and radio</h2>",
+        "<p>The link budget was its own project. I ran a <strong>Ubiquiti Rocket 5&nbsp;GHz bridge</strong> for the high-bandwidth video and CV telemetry, an <strong>RFD900x</strong> modem for long-range MAVLink telemetry as a robust fallback, and a RadioLink R12DS receiver for direct RC override — three independent radios so that losing one didn't lose the aircraft. On the ground I built a matching station: a laptop, an 8-port Cat5 gigabit switch, the paired Ubiquiti dish, an RFD900x and a RadioLink AT10 transmitter. Antenna, switch, power — a whole miniature ground network whose only job was to keep one aircraft talking.</p>",
+        "<h2>What it taught me</h2>",
+        "<p>Canhıraş is the project I point to when someone asks whether I can own a whole system. Aero, mechanical, electrical, embedded, networking and a bit of computer vision — all of it had to agree with each other, and when they didn't, there was no one else to hand it to. It's also where I learned that carrying a team alone is a real cost, not a flex. But the aircraft was mine end to end, and that's a rare thing to be able to say honestly.</p>"
+    ]
+}

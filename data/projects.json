@@ -1,0 +1,67 @@
+[
+    {
+        "slug": "canhiras",
+        "title": "Canhıraş — Autonomous UAV",
+        "emoji": "🛩️",
+        "thumb": "data/projects/canhiras/thumb.jpg",
+        "tags": ["hardware", "autonomy", "teknofest"],
+        "date": "2022",
+        "role": "Sole designer & builder",
+        "blurb": "A twin-engine fixed-wing UAV designed, wired and flown from scratch for Teknofest — airframe CAD, avionics, onboard computer-vision computer and ground station, all solo.",
+        "featured": true,
+        "hasPage": true
+    },
+    {
+        "slug": "universe-platform",
+        "title": "The Universe Platform — Engine & Editor",
+        "emoji": "🧊",
+        "tags": ["engine", "unity", "c#"],
+        "date": "2022 — 2026",
+        "role": "Core engineer → Technical Producer",
+        "blurb": "One of five core engineers on a UGC game platform built from scratch. Sole author of the voxel engine, the in-app editor framework and the asset pipeline.",
+        "link": "https://theuniverse.now",
+        "hasPage": false
+    },
+    {
+        "slug": "intergalacticorp",
+        "title": "INTERGALACTICORP.",
+        "emoji": "🚀",
+        "tags": ["steam", "co-founder", "game"],
+        "date": "2024",
+        "role": "Co-founder",
+        "blurb": "Satirical space-corporation game shipped on Steam with an 8,000+ wishlist launch — built by the studio I co-founded, Nuke The Boss.",
+        "link": "https://store.steampowered.com/app/3070720/INTERGALACTICORP/",
+        "hasPage": false
+    },
+    {
+        "slug": "build-the-earth",
+        "title": "Build The Earth — Türkiye",
+        "emoji": "🌍",
+        "tags": ["community", "minecraft"],
+        "date": "2020 — now",
+        "role": "Founder (TR branch) · Admin",
+        "blurb": "Founded the Turkish branch of the project recreating Earth 1:1 in Minecraft; admin of the 150,000+ member global community.",
+        "link": "https://buildtheearth.net",
+        "hasPage": false
+    },
+    {
+        "slug": "grizzly-bear",
+        "title": "Grizzly Bear — Smart Home",
+        "emoji": "🐻",
+        "tags": ["iot", "hardware", "fullstack"],
+        "date": "2016 — 2019",
+        "role": "Founder · Solo build",
+        "blurb": "NodeMCU-based smart home system — hardware, firmware and web dashboard built solo and deployed across 10+ buildings.",
+        "hasPage": false
+    },
+    {
+        "slug": "atilla",
+        "title": "Atilla — AI Assistant",
+        "emoji": "🤖",
+        "tags": ["ai", "smart-home"],
+        "date": "2017",
+        "role": "Solo build",
+        "blurb": "AI personal assistant & smart-home controller — the project that kicked off the whole FabaluSoftware rabbit hole.",
+        "hasPage": false
+    }
+]
