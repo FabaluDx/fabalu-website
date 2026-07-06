@@ -7,45 +7,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css?v=3">
 
-    <title>The Funny Corner — Fabalu's World</title>
+    <title>Blog — Fabalu's World</title>
 </head>
 
-<body class="page-scratches" data-feed="data/blogs/blogDatas.json">
+<body class="page-blog" data-feed="data/posts.json">
 
     <nav class="site-nav">
         <div class="inner">
             <a class="brand" href="index.html">Fabalu's <span>World</span></a>
             <div class="links">
                 <a href="index.html">Portfolio</a>
-                <a href="blog.html">Blog</a>
-                <a href="scratches.html" class="active">Funny Corner</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="scratches.html">Funny Corner</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="container">
-            <span class="eyebrow">aus dem Archiv</span>
-            <h1>Die <span class="grad">Seminararbeit</span> Scratches</h1>
-            <p class="sub">Scientific article scratches I wrote in German, while learning German. Preserved exactly as written — typos, chaos and all.</p>
-            <span class="scratch-note">grammar sold separately :&gt;</span>
+            <span class="eyebrow">personal blog</span>
+            <h1>Thoughts, builds &amp; <span class="grad">experiments</span></h1>
+            <p class="sub">Game engines, AI, electronics and whatever else escapes my brain at 2 a.m. Written by one person, reviewed by nobody.</p>
             <div class="actions">
-                <a class="btn btn-ghost" href="blog.html"><i class="fas fa-arrow-left"></i> back to the serious blog</a>
+                <a class="btn btn-primary" href="#posts"><i class="fas fa-book-open"></i> Read the blog</a>
+                <a class="btn btn-ghost" href="scratches.html"><i class="fas fa-face-grin-tears"></i> The Funny Corner</a>
             </div>
         </div>
     </header>
 
     <main class="container" id="posts">
         <div class="section-head">
-            <h2>All scratches</h2>
-            <span class="hint">click a card to read — Deutschkenntnisse empfohlen</span>
+            <h2>Latest posts</h2>
+            <span class="hint">click a card to read</span>
         </div>
         <div class="post-grid"></div>
-        <div class="empty-state" hidden>Nothing here yet.</div>
+        <div class="empty-state" hidden>Nothing here yet — the good stuff is brewing. ☕</div>
     </main>
 
     <footer class="site-footer">
-        © 2026 Fabalu — 100% certified Denglisch. No grammar checkers were consulted in the making of these articles.
+        <div class="icons">
+            <a href="https://www.youtube.com/@fabalu7666" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/fabalu/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://fabalu.itch.io" aria-label="itch.io"><i class="fab fa-itch-io"></i></a>
+        </div>
+        © 2026 Fabalu — built from scratch, obviously. Looking for the German seminar scratches? They live in the <a href="scratches.html">Funny Corner</a>.
     </footer>
 
     <div class="reader-overlay" id="overlay"></div>
@@ -71,7 +76,7 @@
                 <p class="excerpt"></p>
                 <div class="meta">
                     <span class="date-wrap"><i class="fas fa-calendar"></i><span class="date"></span></span>
-                    <span class="read">lesen <i class="fas fa-arrow-right"></i></span>
+                    <span class="read">read <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
         </div>

@@ -3,45 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Furkan 'Fabalu' Özkan — senior game developer & technical producer. Game engines, AI, electronics.">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=2">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=3">
 
-    <title>Fabalu's World — Blog</title>
+    <title>Fabalu — Furkan Özkan · Game Developer & Technical Producer</title>
 </head>
 
-<body class="page-home" data-feed="data/posts.json">
+<body class="page-portfolio">
 
     <nav class="site-nav">
         <div class="inner">
             <a class="brand" href="index.html">Fabalu's <span>World</span></a>
             <div class="links">
-                <a href="index.html" class="active">Blog</a>
+                <a href="index.html" class="active">Portfolio</a>
+                <a href="blog.html">Blog</a>
                 <a href="scratches.html">Funny Corner</a>
-                <a href="/">fabalu.xyz</a>
             </div>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="container">
-            <span class="eyebrow">personal blog</span>
-            <h1>Thoughts, builds &amp; <span class="grad">experiments</span></h1>
-            <p class="sub">Game engines, AI, electronics and whatever else escapes my brain at 2 a.m. Written by one person, reviewed by nobody.</p>
-            <div class="actions">
-                <a class="btn btn-primary" href="#posts"><i class="fas fa-book-open"></i> Read the blog</a>
-                <a class="btn btn-ghost" href="scratches.html"><i class="fas fa-face-grin-tears"></i> The Funny Corner</a>
+    <header class="portfolio-hero">
+        <div class="inner">
+            <div class="intro">
+                <span class="eyebrow">Furkan Özkan · a.k.a. Fabalu</span>
+                <h1>I build <span class="grad">game engines</span> — and the teams around them.</h1>
+                <p class="sub">Senior game developer &amp; technical producer with 8+ years across game engines, embedded systems and web platforms — now studying AI at TH Rosenheim and wiring it into game development pipelines.</p>
+                <div class="actions">
+                    <a class="btn btn-primary" href="#projects"><i class="fas fa-cube"></i> View projects</a>
+                    <a class="btn btn-ghost" href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
+                    <a class="btn btn-ghost" href="mailto:fabalusoftware@hotmail.com"><i class="fas fa-envelope"></i> Contact</a>
+                </div>
+            </div>
+            <div class="avatar">
+                <img src="data/profile.jpg" alt="Furkan Özkan">
             </div>
         </div>
     </header>
 
-    <main class="container" id="posts">
-        <div class="section-head">
-            <h2>Latest posts</h2>
-            <span class="hint">click a card to read</span>
-        </div>
-        <div class="post-grid"></div>
-        <div class="empty-state" hidden>Nothing here yet — the good stuff is brewing. ☕</div>
+    <main class="container">
+
+        <section class="stats">
+            <div class="stat"><div class="num">8+</div><div class="label">years shipping software</div></div>
+            <div class="stat"><div class="num">12</div><div class="label">person team led</div></div>
+            <div class="stat"><div class="num">8</div><div class="label">mobile games shipped</div></div>
+            <div class="stat"><div class="num">150k+</div><div class="label">community members</div></div>
+        </section>
+
+        <section id="experience">
+            <div class="section-head">
+                <h2>Experience</h2>
+                <span class="hint">the long version lives in my CV</span>
+            </div>
+            <div class="timeline">
+                <div class="tl-item">
+                    <span class="when">2022 — present</span>
+                    <h3>Senior Technical Producer / Developer</h3>
+                    <div class="where">The Universe Platform, İstanbul</div>
+                    <p>One of five core engineers building a UGC game platform and its engine from scratch. Sole author of the voxel engine, the studio's editor framework and the asset pipeline; co-built terrain, road &amp; grass systems. Grew from Mid Developer to Technical Producer — now owning roadmap, milestones and stakeholder alignment for the 12-person team. <a href="https://theuniverse.now">theuniverse.now</a></p>
+                </div>
+                <div class="tl-item">
+                    <span class="when">2024 — 2025</span>
+                    <h3>Co-Founder</h3>
+                    <div class="where">Nuke The Boss, Ankara</div>
+                    <p>Co-founded a game studio and shipped <em>INTERGALACTICORP.</em> on Steam, reaching 8,000+ wishlists. Owned strategy &amp; communication.</p>
+                </div>
+                <div class="tl-item">
+                    <span class="when">2021 — 2022</span>
+                    <h3>Senior Game Developer</h3>
+                    <div class="where">L8 Studios, İstanbul</div>
+                    <p>Shipped 8 mobile games; managed a small team of 4 using Agile &amp; Kanban.</p>
+                </div>
+                <div class="tl-item">
+                    <span class="when">2020 — 2022</span>
+                    <h3>Software &amp; Product Manager</h3>
+                    <div class="where">Haf Games, İstanbul</div>
+                    <p>Started as a developer, became a partner; the TeamGame app raised 500,000+ TL in donations.</p>
+                </div>
+                <div class="tl-item">
+                    <span class="when">2020 — present</span>
+                    <h3>Founder &amp; Moderator</h3>
+                    <div class="where">Build The Earth</div>
+                    <p>Admin of a 150,000+ member community recreating the world 1:1 in Minecraft; founder of its Turkish branch. <a href="https://buildtheearth.net">buildtheearth.net</a></p>
+                </div>
+                <div class="tl-item">
+                    <span class="when">2016 — 2019</span>
+                    <h3>Freelance Software Developer</h3>
+                    <div class="where">Remote</div>
+                    <p>VR/AR/XR for Sınav College, contracted work on launched Steam titles (under NDA), PCB &amp; layout design for manufacturers, and Grizzly Bear — a solo-built smart home stack deployed across 10+ buildings.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-head">
+                <h2>Selected projects</h2>
+                <span class="hint">a mix of shipped, soldered and slightly unhinged</span>
+            </div>
+            <div class="post-grid">
+                <a class="project-link" href="https://theuniverse.now">
+                    <div class="card">
+                        <div class="thumb no-image">🧊</div>
+                        <div class="body">
+                            <div class="tags"><span class="tag">engine</span><span class="tag">unity</span></div>
+                            <h3>Voxel Engine &amp; Editor Framework</h3>
+                            <p class="excerpt">Infinite voxel terrain engine, in-app editor (scene, hierarchy, inspector, gizmos) and a full asset pipeline — the creative core of The Universe Platform.</p>
+                            <div class="meta"><span>2022 — 2026</span><span class="read">visit <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+                        </div>
+                    </div>
+                </a>
+                <a class="project-link" href="https://store.steampowered.com/app/3070720/INTERGALACTICORP/">
+                    <div class="card">
+                        <div class="thumb no-image">🚀</div>
+                        <div class="body">
+                            <div class="tags"><span class="tag">steam</span><span class="tag">co-founder</span></div>
+                            <h3>INTERGALACTICORP.</h3>
+                            <p class="excerpt">Satirical space-corporation game shipped on Steam with an 8,000+ wishlist launch — built by the studio I co-founded.</p>
+                            <div class="meta"><span>2024</span><span class="read">store page <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+                        </div>
+                    </div>
+                </a>
+                <a class="project-link" href="https://buildtheearth.net">
+                    <div class="card">
+                        <div class="thumb no-image">🌍</div>
+                        <div class="body">
+                            <div class="tags"><span class="tag">community</span><span class="tag">minecraft</span></div>
+                            <h3>Build The Earth Türkiye</h3>
+                            <p class="excerpt">Founded the Turkish branch of the project recreating Earth 1:1 in Minecraft; admin of the 150k+ global community.</p>
+                            <div class="meta"><span>2020 — now</span><span class="read">visit <i class="fas fa-arrow-up-right-from-square"></i></span></div>
+                        </div>
+                    </div>
+                </a>
+                <div class="card">
+                    <div class="thumb no-image">🐻</div>
+                    <div class="body">
+                        <div class="tags"><span class="tag">iot</span><span class="tag">hardware</span></div>
+                        <h3>Grizzly Bear Smart Home</h3>
+                        <p class="excerpt">NodeMCU-based smart home system — hardware, firmware and web dashboard built solo, deployed across 10+ buildings.</p>
+                        <div class="meta"><span>2016 — 2019</span><span class="read"></span></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="thumb no-image">🛩️</div>
+                    <div class="body">
+                        <div class="tags"><span class="tag">hardware</span><span class="tag">teknofest</span></div>
+                        <h3>UAV Canhıraş</h3>
+                        <p class="excerpt">Fixed-wing UAV built from scratch for Teknofest — airframe, electronics and flight systems. (Also built a caravan. Long story.)</p>
+                        <div class="meta"><span>2024</span><span class="read"></span></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="thumb no-image">🤖</div>
+                    <div class="body">
+                        <div class="tags"><span class="tag">ai</span><span class="tag">classic</span></div>
+                        <h3>Atilla — AI Assistant</h3>
+                        <p class="excerpt">AI personal assistant &amp; smart home controller — the 2017 project that started the whole FabaluSoftware rabbit hole.</p>
+                        <div class="meta"><span>2017</span><span class="read"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-head">
+                <h2>Tech &amp; tools</h2>
+            </div>
+            <div class="chips">
+                <span class="chip">Unity 3D</span>
+                <span class="chip">C#</span>
+                <span class="chip">.NET</span>
+                <span class="chip">Node.js</span>
+                <span class="chip">Python</span>
+                <span class="chip">PyTorch</span>
+                <span class="chip">LLM APIs</span>
+                <span class="chip">Azure</span>
+                <span class="chip">PlayFab</span>
+                <span class="chip">GCP</span>
+                <span class="chip">MySQL</span>
+                <span class="chip">Git</span>
+                <span class="chip">Blender</span>
+                <span class="chip">Raspberry Pi</span>
+                <span class="chip">Fritzing</span>
+                <span class="chip">PCB Design</span>
+            </div>
+        </section>
+
+        <section class="contact-cta">
+            <h2>Let's build something.</h2>
+            <p>Open to senior game engineering and technical producer roles — or just a good conversation about voxels, drones and questionable 2 a.m. ideas.</p>
+            <a class="btn btn-primary" href="mailto:fabalusoftware@hotmail.com"><i class="fas fa-envelope"></i> fabalusoftware@hotmail.com</a>
+        </section>
+
     </main>
 
     <footer class="site-footer">
@@ -50,38 +203,8 @@
             <a href="https://www.linkedin.com/in/fabalu/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             <a href="https://fabalu.itch.io" aria-label="itch.io"><i class="fab fa-itch-io"></i></a>
         </div>
-        © 2026 Fabalu — built from scratch, obviously. Looking for the German seminar scratches? They live in the <a href="scratches.html">Funny Corner</a>.
+        © 2026 Furkan Özkan — Bursa &amp; Rosenheim. Fresh nonsense on the <a href="blog.html">blog</a>, vintage nonsense in the <a href="scratches.html">Funny Corner</a>.
     </footer>
 
-    <div class="reader-overlay" id="overlay"></div>
-    <article class="reader" id="reader" role="dialog" aria-modal="true">
-        <div class="head">
-            <div>
-                <div class="title"></div>
-                <div class="date"><i class="fas fa-calendar"></i><span></span></div>
-            </div>
-            <button class="close" aria-label="Close">&times;</button>
-        </div>
-        <div class="body"></div>
-    </article>
-
-    <template id="post-card">
-        <div class="card">
-            <div class="thumb">
-                <img alt="" loading="lazy">
-                <span class="index"></span>
-            </div>
-            <div class="body">
-                <h3 class="header"></h3>
-                <p class="excerpt"></p>
-                <div class="meta">
-                    <span class="date-wrap"><i class="fas fa-calendar"></i><span class="date"></span></span>
-                    <span class="read">read <i class="fas fa-arrow-right"></i></span>
-                </div>
-            </div>
-        </div>
-    </template>
-
-    <script defer src="index.js?v=2"></script>
 </body>
 </html>
