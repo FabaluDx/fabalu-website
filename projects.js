@@ -43,6 +43,10 @@ function makeCard(p) {
 
     if (p.featured) { card.classList.add('featured'); }
 
+    // anything without its own story page yet gets a "soon" marker
+    const soon = !p.hasPage;
+    if (soon) { card.classList.add('is-soon'); }
+
     // thumb: real image or emoji gradient cover
     const thumb = node.querySelector('.thumb');
     const img = node.querySelector('img');
@@ -53,6 +57,12 @@ function makeCard(p) {
         img.remove();
         thumb.classList.add('no-image');
         thumb.insertAdjacentText('afterbegin', p.emoji ?? '📦');
+    }
+    if (soon) {
+        const badge = document.createElement('span');
+        badge.className = 'soon-badge';
+        badge.textContent = 'story soon';
+        thumb.appendChild(badge);
     }
 
     // tags
@@ -74,6 +84,8 @@ function makeCard(p) {
         read.innerHTML = 'read the story <i class="fas fa-arrow-right"></i>';
     } else if (p.link) {
         read.innerHTML = 'visit <i class="fas fa-arrow-up-right-from-square"></i>';
+    } else {
+        read.innerHTML = '<span class="muted-read">story soon</span>';
     }
 
     grid.appendChild(node);

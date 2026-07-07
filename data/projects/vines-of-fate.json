@@ -1,0 +1,35 @@
+{
+    "slug": "vines-of-fate",
+    "kicker": "The Story of",
+    "title": "Vines Of Fate",
+    "subtitle": "Climb the vine of destiny. Try not to look down. Definitely don't look down.",
+    "date": "Feb 2023",
+    "role": "Developer · SFX · Voiceover",
+    "team": "Global Game Jam 2023 · 48 hours · team of 3",
+    "hero": "data/projects/vines-of-fate/hero.jpg",
+    "tags": ["Unity", "3D platformer", "first-person", "atmospheric", "ggj2023"],
+    "links": [
+        { "label": "Play on itch.io", "url": "https://xd-holmes.itch.io/vines-of-fate" }
+    ],
+    "specs": [
+        ["Jam", "Global Game Jam 2023"],
+        ["Time budget", "48 hours"],
+        ["Team size", "3"],
+        ["My hats", "Developer, sound effects, and — yes — the voice"],
+        ["Theme", "\"Roots\" (we went with vines, close enough)"],
+        ["Vibe", "atmospheric, slightly ominous, glowing"]
+    ],
+    "gallery": [
+        { "src": "data/projects/vines-of-fate/g1.jpg", "caption": "Two faces in the dark. Friendly? Unclear. Keep climbing." },
+        { "src": "data/projects/vines-of-fate/g2.jpg", "caption": "The vines glow so you can see where fate wants you to go." },
+        { "src": "data/projects/vines-of-fate/g3.jpg", "caption": "Every run grows a different vine — like a life, procedurally." },
+        { "src": "data/projects/vines-of-fate/g4.jpg", "caption": "Red means obstacle. Red means think fast." }
+    ],
+    "body": [
+        "<p><strong>Vines Of Fate</strong> was our 48-hour sprint at Global Game Jam 2023, and the pitch is dangerously poetic: everybody gets one vine in this life — now go grow yours. You climb a first-person tangle of glowing vines that represent your destiny, dodging the obstacles trying to knock you off it. Every run generates a brand-new vine, because (deep breath) no two lives are the same. We were very tired and very sincere.</p>",
+        "<h2>What I did</h2>",
+        "<p>Three of us, 48 hours. I was on <strong>development</strong>, built all the <strong>sound effects</strong>, and — because someone had to and nobody stopped me — I did the <strong>voiceover</strong> too. So if you hear a mysterious narrator gently guiding you toward your fate: hi. That's me. Doing my Serious Voice.</p>",
+        "<h2>The fun part</h2>",
+        "<p>The look came together almost by accident. Pitch-dark scene, a few emissive materials on the vines, and suddenly the whole thing felt like climbing through a neon dream. It's the kind of thing you only find when you're too sleep-deprived to overthink it. Is it a complete game? No. Is it a <em>vibe</em>? Absolutely. Some of my favourite work happens in the 48-hour pressure cooker, and this one still makes me smile.</p>"
+    ]
+}

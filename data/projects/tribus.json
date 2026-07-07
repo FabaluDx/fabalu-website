@@ -1,0 +1,35 @@
+{
+    "slug": "tribus",
+    "kicker": "The Story of",
+    "title": "Tribus",
+    "subtitle": "A 3D kid in a 2D town, holding a single rose and a lot of hope.",
+    "date": "2021",
+    "role": "Developer · Team Toroka",
+    "team": "Mağara Jam 3 · 🏅 5th place",
+    "hero": "data/projects/tribus/hero.jpg",
+    "tags": ["Unity", "2D + 3D", "platformer", "puzzle", "game jam"],
+    "links": [
+        { "label": "Play on itch.io", "url": "https://toroka.itch.io/tribus" }
+    ],
+    "specs": [
+        ["Jam", "Mağara Jam 3"],
+        ["Result", "🏅 5th place"],
+        ["Studio", "Toroka Entertainment"],
+        ["My role", "Developer"],
+        ["The hook", "A 3D character trapped in a 2D world"],
+        ["Feels", "bittersweet"]
+    ],
+    "gallery": [
+        { "src": "data/projects/tribus/g1.jpg", "caption": "Platforming through DUOLAND — the two-dimensional town that never quite accepted him." },
+        { "src": "data/projects/tribus/g2.jpg", "caption": "Floating fragments and a long way down." },
+        { "src": "data/projects/tribus/g3.jpg", "caption": "The world is flat. Tribus, stubbornly, is not." }
+    ],
+    "body": [
+        "<p>Meet Tribus: a happy little kid living in the extremely happy 2D town of DUOLAND, where everyone gets along wonderfully — except him. Tribus has a problem, which is that he is <em>three-dimensional</em>. In a flat world. He's more advanced than everyone around him and the universe simply cannot cope, so he's spent his whole life left out and friendless. Relatable, honestly.</p>",
+        "<p>Then he hears that Amare — a girl in the village — loves roses. If he can bring her a <em>Roseract</em> for her birthday, maybe, just maybe, he'll finally have a friend. So off he goes. That's the game: a lonely 3D boy platforming across a 2D world for one shot at not being alone.</p>",
+        "<h2>The dimension gimmick</h2>",
+        "<p>The whole design leans on that one contrast — 2D world, 3D protagonist — and it does a lot of quiet emotional lifting. Being the thing that doesn't fit the space around it turns out to be a great platforming mechanic <em>and</em> a decent metaphor. We made it with the Toroka crew for Mağara Jam 3 and landed 5th, which for a melancholy jam game about a sad geometric child felt like a win.</p>",
+        "<h2>My part</h2>",
+        "<p>I was on development — making a character who obeys 3D rules feel right inside a 2D stage was exactly the kind of \"wait, how do we even do this\" problem I love. Tribus is early-days me, but the instinct is already there: take a weird technical constraint and let it carry the whole feeling of the game.</p>"
+    ]
+}

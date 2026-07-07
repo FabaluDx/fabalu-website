@@ -1,0 +1,37 @@
+{
+    "slug": "iste-bu-parca",
+    "kicker": "The Story of",
+    "title": "İşte Bu Parça!",
+    "subtitle": "A robot yells at you. You sort trash. It's a love story, really.",
+    "date": "Nov 2023",
+    "role": "Solo — everything",
+    "team": "Mağara Jam '23 · 72 hours · 🥈 2nd place",
+    "hero": "data/projects/iste-bu-parca/hero.jpg",
+    "tags": ["Unity", "Maya", "first-person", "time attack", "game jam"],
+    "links": [
+        { "label": "Play on itch.io", "url": "https://fabalu.itch.io/istebuparca" }
+    ],
+    "specs": [
+        ["Jam", "Mağara Jam '23"],
+        ["Time budget", "72 hours (I slept for maybe 6 of them)"],
+        ["Team size", "1 — hi, it's me"],
+        ["Result", "🥈 2nd place"],
+        ["Built with", "Unity + Maya"],
+        ["Core loop", "Grab gizmo → read its colour → yeet it into the correct machine"]
+    ],
+    "gallery": [
+        { "src": "data/projects/iste-bu-parca/g4.jpg", "caption": "The sorting rules, as a blueprint. Green = raw, orange = faulty, red = trash. Black = actually useful (rare)." },
+        { "src": "data/projects/iste-bu-parca/g1.jpg", "caption": "The workshop, mid-panic." },
+        { "src": "data/projects/iste-bu-parca/g2.jpg", "caption": "Tools of the trade: a hook, a screwdriver, and a hammer for emotional support." },
+        { "src": "data/projects/iste-bu-parca/g3.jpg", "caption": "The reactor waits. The reactor is always hungry." }
+    ],
+    "body": [
+        "<p>Picture this: a robot, a two-way radio, one (1) human, and an absolutely unreasonable pile of junk. The robot has opinions about where every piece of that junk should go. Your job is to agree with the robot. Quickly. This is <strong>İşte Bu Parça!</strong> — Turkish for roughly <em>\"That's the piece!\"</em>, which is also the sound I made at 4 a.m. finding the bug that had eaten my evening.</p>",
+        "<p>I built the whole thing <strong>solo</strong> in 72 hours for Mağara Jam '23 — code, 3D models in Maya, design, the lot — and somehow it walked away with <strong>2nd place</strong>. I'm still a little smug about it.</p>",
+        "<h2>The actual game</h2>",
+        "<p>You're a first-person factory grunt. Gizmos drop onto your table, each glowing a colour that tells you its fate: <em>green</em> is raw material for the 3D printer, <em>orange</em> is a faulty part headed for the melter, <em>red</em> is straight-up trash for the shredder, and <em>black</em> means — miracle of miracles — it's actually ready to use. You've got a hook, a screwdriver and a hammer, a ticking clock, and a robot supervisor who never, ever stops talking.</p>",
+        "<h2>What 72 hours teaches you</h2>",
+        "<p>Mostly that scope is a liar. Every jam I promise myself \"small and polished this time,\" and every jam I end up hand-modelling a screwdriver at midnight because it <em>had</em> to feel right in the hand. Doing it alone meant every problem — physics jank, a reactor that refused to accept perfectly good trash, UI that fought me — was mine and only mine. No one to blame, no one to wait on. Turns out that's exactly the constraint I do my best work under.</p>",
+        "<p>If you play one thing I've made in a weekend, make it this one. Bring headphones. The robot insists.</p>"
+    ]
+}

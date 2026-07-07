@@ -7,9 +7,59 @@
         "tags": ["hardware", "autonomy", "teknofest"],
         "date": "2022",
         "role": "Sole designer & builder",
-        "blurb": "A twin-engine fixed-wing UAV designed, wired and flown from scratch for Teknofest — airframe CAD, avionics, onboard computer-vision computer and ground station, all solo.",
+        "blurb": "A twin-engine fixed-wing UAV designed, wired and flown from scratch for Teknofest — airframe CAD, avionics, an onboard vision computer and a full ground station, all solo.",
         "featured": true,
         "hasPage": true
+    },
+    {
+        "slug": "iste-bu-parca",
+        "title": "İşte Bu Parça!",
+        "thumb": "data/projects/iste-bu-parca/thumb.jpg",
+        "tags": ["game jam", "unity", "solo"],
+        "date": "2023",
+        "role": "The Story of · solo · 🥈",
+        "blurb": "A robot yells at you, you sort colour-coded junk into the right machines against the clock. Built solo in 72 hours — took 2nd place at Mağara Jam '23.",
+        "hasPage": true
+    },
+    {
+        "slug": "vines-of-fate",
+        "title": "Vines Of Fate",
+        "thumb": "data/projects/vines-of-fate/thumb.jpg",
+        "tags": ["game jam", "unity", "ggj2023"],
+        "date": "2023",
+        "role": "The Story of · dev · SFX · voice",
+        "blurb": "Climb the glowing vine of your destiny in first person. A 48-hour Global Game Jam build — I coded it, made the sound, and did the narrator's voice.",
+        "hasPage": true
+    },
+    {
+        "slug": "tribus",
+        "title": "Tribus",
+        "thumb": "data/projects/tribus/thumb.jpg",
+        "tags": ["game jam", "unity", "2d+3d"],
+        "date": "2021",
+        "role": "The Story of · Team Toroka",
+        "blurb": "A lonely 3D kid platforms across a flat 2D town to bring a girl a rose. Melancholy jam game, 5th place at Mağara Jam 3.",
+        "hasPage": true
+    },
+    {
+        "slug": "life-is-colorful",
+        "title": "Life is Colorful",
+        "thumb": "data/projects/life-is-colorful/thumb.jpg",
+        "tags": ["game jam", "unity", "2d"],
+        "date": "2021",
+        "role": "The Story of · team of 4",
+        "blurb": "Save your father, commit light crimes, try not to become a demon. A moral-balance RPG with 100% hand-drawn art.",
+        "hasPage": true
+    },
+    {
+        "slug": "hayali-bahce",
+        "title": "Hayali Bahçe",
+        "emoji": "🌱",
+        "tags": ["game", "unity"],
+        "date": "2022",
+        "role": "The Story of",
+        "blurb": "\"Imaginary Garden\" — a small game I keep meaning to write up properly.",
+        "hasPage": false
     },
     {
         "slug": "universe-platform",
@@ -62,6 +112,26 @@
         "date": "2017",
         "role": "Solo build",
         "blurb": "AI personal assistant & smart-home controller — the project that kicked off the whole FabaluSoftware rabbit hole.",
+        "hasPage": false
+    },
+    {
+        "slug": "sports",
+        "title": "Sports & the Outdoors",
+        "emoji": "🏔️",
+        "tags": ["life", "sports"],
+        "date": "ongoing",
+        "role": "Enthusiast · questionable form",
+        "blurb": "The sports I throw myself at and the trails I walk — with more enthusiasm than technique. Stories (and a few injuries) coming soon.",
+        "hasPage": false
+    },
+    {
+        "slug": "camps",
+        "title": "Camp Journeys",
+        "emoji": "🏕️",
+        "tags": ["life", "travel"],
+        "date": "ongoing",
+        "role": "Tents · campfires · detours",
+        "blurb": "Field notes from tents, campfires and slightly-off navigation across the map. Write-ups coming soon.",
         "hasPage": false
     }
 ]

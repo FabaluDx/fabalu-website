@@ -1,0 +1,33 @@
+{
+    "slug": "life-is-colorful",
+    "kicker": "The Story of",
+    "title": "Life is Colorful",
+    "subtitle": "Save your father. Commit light crimes. Try not to become a demon. You know, choices.",
+    "date": "2021",
+    "role": "Developer · team of 4",
+    "team": "Fabalu · dejw · Oskiek · Friendwolf",
+    "hero": "data/projects/life-is-colorful/hero.jpg",
+    "tags": ["Unity", "2D", "adventure", "puzzle", "RPG", "mystery"],
+    "links": [
+        { "label": "Play on itch.io", "url": "https://fabalu.itch.io/life-is-colorful" }
+    ],
+    "specs": [
+        ["Genre", "Adventure · Puzzle · RPG"],
+        ["Team size", "4"],
+        ["My role", "Developer"],
+        ["Art", "100% hand-made — zero external 2D assets"],
+        ["Central tension", "be good, or survive — pick one"],
+        ["Mood", "atmospheric, a little cursed"]
+    ],
+    "gallery": [
+        { "src": "data/projects/life-is-colorful/hero.jpg", "caption": "Young Joseph, the amulet, and two versions of how this could go." }
+    ],
+    "body": [
+        "<p><strong>Life is Colorful</strong> follows young Joseph, who just wanted to save his sick father. He goes looking for the one potion that can do it, runs into a witch (they're always around when you least need them), and gets himself cursed. Now his amulet demands he commit bad deeds to keep going — but do too many, and the colour literally drains out of his life until he turns into a demon. No pressure.</p>",
+        "<p>So the whole game is a tug-of-war with your own conscience. Be good and struggle, or take the easy dark path and slowly stop being yourself. You only live once — choose your actions carefully. It's a moral-balance RPG dressed up as a cursed little fairytale.</p>",
+        "<h2>All hand-made</h2>",
+        "<p>The thing I'm proudest of on this one isn't even mine to claim solo: <strong>every single 2D asset in the game was drawn by our own artists.</strong> Nothing bought, nothing borrowed. In a world of asset-store shortcuts, four people sitting down and making an entire game's worth of original art still feels like the right kind of stubborn.</p>",
+        "<h2>My part</h2>",
+        "<p>I was on development — wiring up the curse system, the choice tracking, and the slow colour-drain that's basically the game's whole soul. It's one of my earlier team projects, and you can feel us figuring out how to actually finish a game together. We did. It still holds up.</p>"
+    ]
+}

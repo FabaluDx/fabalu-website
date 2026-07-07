@@ -57,6 +57,7 @@ function render(p) {
         <header class="proj-hero" style="background-image:url('${esc(p.hero)}')">
             <div class="inner">
                 <a class="back" href="projects.html"><i class="fas fa-arrow-left"></i> All projects</a>
+                ${p.kicker ? `<div class="kicker">${esc(p.kicker)}</div>` : ''}
                 <h1>${esc(p.title)}</h1>
                 ${p.subtitle ? `<p class="subtitle">${esc(p.subtitle)}</p>` : ''}
                 <div class="meta-row">
