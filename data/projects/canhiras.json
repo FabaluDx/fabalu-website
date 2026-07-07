@@ -11,7 +11,7 @@
     "links": [],
     "specs": [
         ["Configuration", "Twin-engine high-wing fixed-wing, tricycle gear"],
-        ["Flight weight", "5.2 kg (internals, airframe excluded)"],
+        ["Flight weight", "5.2 kg (Around ~24 Big Macs for american friends)"],
         ["Flight controller", "Cube Orange + Here2 GNSS"],
         ["Onboard computer", "NVIDIA Jetson TX2 (onboard vision)"],
         ["Camera", "Raspberry Pi HQ Camera (CMOS)"],

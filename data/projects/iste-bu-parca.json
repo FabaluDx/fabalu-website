@@ -2,22 +2,25 @@
     "slug": "iste-bu-parca",
     "kicker": "The Story of",
     "title": "İşte Bu Parça!",
-    "subtitle": "A robot yells at you. You sort trash. It's a love story, really.",
+    "subtitle": "A robot yells at you. You sort trash. You can escape... Really!",
     "date": "Nov 2023",
-    "role": "Solo — everything",
-    "team": "Mağara Jam '23 · 72 hours · 🥈 2nd place",
+    "role": "Team of 4 · Mağara Jam '23",
+    "team": "Fabalu · dejw · Oskiek · Antik Karmaşa · Eleven",
     "hero": "data/projects/iste-bu-parca/hero.jpg",
     "tags": ["Unity", "Maya", "first-person", "time attack", "game jam"],
     "links": [
-        { "label": "Play on itch.io", "url": "https://fabalu.itch.io/istebuparca" }
+        { "label": "Play on itch.io", "url": "https://fabalu.itch.io/istebuparca" },
+        { "label": "Watch the announcement livestream", "url": "https://www.youtube.com/watch?v=3atsLEGn3WE" }
     ],
     "specs": [
         ["Jam", "Mağara Jam '23"],
         ["Time budget", "72 hours (I slept for maybe 6 of them)"],
-        ["Team size", "1 — hi, it's me"],
-        ["Result", "🥈 2nd place"],
+        ["Team size", "5"],
         ["Built with", "Unity + Maya"],
-        ["Core loop", "Grab gizmo → read its colour → yeet it into the correct machine"]
+        ["Result", "🥈 2nd place"],
+        ["My Role", "Extintial Crisis Coordinator + Code + Art Direction"],
+        ["Core loop", "Grab gizmo → read its colour → yeet it into the correct machine"],
+        ["Feels", "like you are being yelled at by a robot, which is exactly what it is"]
     ],
     "gallery": [
         { "src": "data/projects/iste-bu-parca/g4.jpg", "caption": "The sorting rules, as a blueprint. Green = raw, orange = faulty, red = trash. Black = actually useful (rare)." },

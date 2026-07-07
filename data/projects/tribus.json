@@ -4,18 +4,21 @@
     "title": "Tribus",
     "subtitle": "A 3D kid in a 2D town, holding a single rose and a lot of hope.",
     "date": "2021",
-    "role": "Developer · Team Toroka",
-    "team": "Mağara Jam 3 · 🏅 5th place",
+    "role": "Team of 6 · Mağara Jam 3",
+    "team": "Fabalu · TheDuhan · Kevenece · Eleven · Murat · Lawe",
     "hero": "data/projects/tribus/hero.jpg",
     "tags": ["Unity", "2D + 3D", "platformer", "puzzle", "game jam"],
     "links": [
-        { "label": "Play on itch.io", "url": "https://toroka.itch.io/tribus" }
+        { "label": "Play on itch.io", "url": "https://toroka.itch.io/tribus" },
+        { "label": "Watch the announcement livestream", "url": "https://www.youtube.com/watch?v=2BN9TPj01WY" }
     ],
     "specs": [
         ["Jam", "Mağara Jam 3"],
-        ["Result", "🏅 5th place"],
-        ["Studio", "Toroka Entertainment"],
-        ["My role", "Developer"],
+        ["Time budget", "72 hours (Yea i didn't sleep)"],
+        ["Team size", "6"],
+        ["Built with", "Unity + Maya"],
+        ["Result", "🏅 5th place And the Epic Saga of Toroka"],
+        ["My role", "Team Whipper"],
         ["The hook", "A 3D character trapped in a 2D world"],
         ["Feels", "bittersweet"]
     ],
