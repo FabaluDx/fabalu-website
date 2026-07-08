@@ -33,6 +33,7 @@ function esc(s) {
 
 function render(p) {
     document.title = `${p.title} — Fabalu's World`;
+    seo(p);
 
     const specs = (p.specs || []).map(
         ([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`
@@ -79,6 +80,39 @@ function render(p) {
     `;
 
     wireLightbox(p.gallery || []);
+}
+
+function seo(p) {
+    const url = `https://fabalu.xyz/project.html?p=${encodeURIComponent(p.slug)}`;
+    const title = `${p.title} — Furkan Özkan (Fabalu)`;
+    const desc = p.subtitle || p.blurb || `A project by Furkan Özkan (Fabalu).`;
+    const image = p.hero ? `https://fabalu.xyz/${p.hero}` : 'https://fabalu.xyz/data/og-image.png';
+
+    const set = (id, attr, val) => { const el = document.getElementById(id); if (el) { el.setAttribute(attr, val); } };
+    set('canonical-link', 'href', url);
+    set('og-url', 'content', url);
+    set('og-title', 'content', title);
+    set('og-description', 'content', desc);
+    set('og-image', 'content', image);
+    set('twitter-title', 'content', title);
+    set('twitter-description', 'content', desc);
+    set('twitter-image', 'content', image);
+    set('meta-description', 'content', desc);
+
+    const ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'CreativeWork',
+        'name': p.title,
+        'description': desc,
+        'url': url,
+        'image': image,
+        'datePublished': p.date || undefined,
+        'author': { '@type': 'Person', 'name': 'Furkan Özkan', 'alternateName': 'Fabalu', 'url': 'https://fabalu.xyz/' },
+        'creator': { '@type': 'Person', 'name': 'Furkan Özkan', 'alternateName': 'Fabalu', 'url': 'https://fabalu.xyz/' }
+    });
+    document.head.appendChild(ld);
 }
 
 function wireLightbox(items) {
