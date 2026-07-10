@@ -17,7 +17,7 @@
         "thumb": "data/projects/iste-bu-parca/thumb.jpg",
         "tags": ["game jam", "unity", "solo"],
         "date": "2023",
-        "role": "The Story of · solo · 🥈",
+        "role": "Got the 🥈 place!",
         "blurb": "A robot yells at you, you sort colour-coded junk into the right machines against the clock. Built solo in 72 hours — took 2nd place at Mağara Jam '23.",
         "hasPage": true
     },
@@ -27,7 +27,7 @@
         "thumb": "data/projects/vines-of-fate/thumb.jpg",
         "tags": ["game jam", "unity", "ggj2023"],
         "date": "2023",
-        "role": "The Story of · dev · SFX · voice",
+        "role": "Dev · SFX · voice",
         "blurb": "Climb the glowing vine of your destiny in first person. A 48-hour Global Game Jam build — I coded it, made the sound, and did the narrator's voice.",
         "hasPage": true
     },
@@ -37,7 +37,7 @@
         "thumb": "data/projects/tribus/thumb.jpg",
         "tags": ["game jam", "unity", "2d+3d"],
         "date": "2021",
-        "role": "The Story of · Team Toroka",
+        "role": "Team Toroka",
         "blurb": "A lonely 3D kid platforms across a flat 2D town to bring a girl a rose. Melancholy jam game, 5th place at Mağara Jam 3.",
         "hasPage": true
     },
@@ -47,7 +47,7 @@
         "thumb": "data/projects/life-is-colorful/thumb.jpg",
         "tags": ["game jam", "unity", "2d"],
         "date": "2021",
-        "role": "The Story of · team of 4",
+        "role": "The beginning of Europe journey",
         "blurb": "Save your father, commit light crimes, try not to become a demon. A moral-balance RPG with 100% hand-drawn art.",
         "hasPage": true
     },
@@ -57,7 +57,7 @@
         "emoji": "🌱",
         "tags": ["game", "unity"],
         "date": "2022",
-        "role": "The Story of",
+        "role": "A normally-quiet game",
         "blurb": "\"Imaginary Garden\" — a small game I keep meaning to write up properly.",
         "hasPage": false
     },

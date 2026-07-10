@@ -24,7 +24,8 @@
     "gallery": [
         { "src": "data/projects/canhiras/render.jpg",  "caption": "Full CAD assembly — the twin-tractor layout that defined the airframe." },
         { "src": "data/projects/canhiras/side.jpg",     "caption": "Side profile: high wing, single vertical stabiliser, tricycle gear." },
-        { "src": "data/projects/canhiras/nose.jpg",     "caption": "Nose detail — Pi HQ camera under a carbon prop and a 3D-printed motor mount." },
+        { "src": "data/projects/canhiras/nose.jpg",     "caption": "Nose detail — Pi HQ camera under a carbon prop and the motor mount." },
+        { "src": "data/projects/canhiras/antennas.jpg",  "caption": "The antenna setup." },
         { "src": "data/projects/canhiras/wiring.jpg",   "caption": "The full electrical schematic I drew — air segment on top, ground station below." },
         { "src": "data/projects/canhiras/concept.jpg",  "caption": "The very first sketch: weights, servo counts and incidence angles worked out by hand." }
     ],
