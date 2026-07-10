@@ -36,11 +36,6 @@
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://fabalu.xyz/blog.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
         <loc>https://fabalu.xyz/scratches.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
