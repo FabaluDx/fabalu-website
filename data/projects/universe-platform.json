@@ -9,21 +9,21 @@
     "hero": "data/projects/universe-platform/hero.jpg",
     "tags": ["engine", "unity", "c#", "tragedy"],
     "links": [
-        { "label": "Platform", "url": "https:/theuniverse.now" }
+        { "label": "Platform", "url": "https://theuniverse.now" }
     ],
     "specs": [],
     "gallery": [
         { "src": "data/projects/universe-platform/g1.jpg", "caption": "The final state of The Universe" },
-        { "src": "data/projects/universe-platform/g12.jpg", "caption": "A capture of Code Editor within Universe Game Engine" },
-        { "src": "data/projects/universe-platform/g11.jpg", "caption": "The very first 3 games that is developed inside the Universe Game Engine" },
+        { "src": "data/projects/universe-platform/g12.jpg", "caption": "A capture of Code Editor within The Universe Game Engine" },
+        { "src": "data/projects/universe-platform/g11.jpg", "caption": "The very first 3 games that are developed inside The Universe Game Engine" },
         { "src": "data/projects/universe-platform/g2.jpg", "caption": "A tutorial concept that explains how to emote" },
         { "src": "data/projects/universe-platform/g3.jpg", "caption": "An in-game capture" },
         { "src": "data/projects/universe-platform/g4.jpg", "caption": "The new Unipedia Screen" },
-        { "src": "data/projects/universe-platform/g5.jpg", "caption": "Universe Chest UI" },
-        { "src": "data/projects/universe-platform/g6.jpg", "caption": "Some assets that belongs tu the Universe HUB" },
-        { "src": "data/projects/universe-platform/g8.jpg", "caption": "A lovely cartpostal that we gave away by limited amount at GIST 2023 - 1" },
-        { "src": "data/projects/universe-platform/g9.jpg", "caption": "A lovely cartpostal that we gave away by limited amount at GIST 2023 -2" },
-        { "src": "data/projects/universe-platform/g10.jpg", "caption": "A boss concept that belongs to the one of the game in Universe" },
+        { "src": "data/projects/universe-platform/g5.jpg", "caption": "The Universe Chest UI" },
+        { "src": "data/projects/universe-platform/g6.jpg", "caption": "Some assets from The Universe HUB" },
+        { "src": "data/projects/universe-platform/g8.jpg", "caption": "A lovely cartpostal that we gave away by limited amount at GIST 2024 - 1" },
+        { "src": "data/projects/universe-platform/g9.jpg", "caption": "A lovely cartpostal that we gave away by limited amount at GIST 2024 -2" },
+        { "src": "data/projects/universe-platform/g10.jpg", "caption": "A boss concept that belongs to the one of the games in The Universe" },
         { "src": "data/projects/universe-platform/g7.jpg", "caption": "Absolute Universe -_-" }
     ],
     "body": [
