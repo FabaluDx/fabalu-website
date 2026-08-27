@@ -1,0 +1,28 @@
+{
+    "slug": "db-uludag",
+    "title": "DB Storage days - Uludag University",
+    "kicker": "The Story of",
+    "subtitle": "There we go",
+    "date": "2016",
+    "role": "Speaker",
+    "team": "",
+    "hero": "data/projects/db-uludag/hero.jpg",
+    "tags": [],
+    "links": [],
+    "specs": [],
+    "gallery": [
+        { "src": "data/projects/db-uludag/g1.jpg", "caption": "" },
+        { "src": "data/projects/db-uludag/g2.jpg", "caption": "" },
+        { "src": "data/projects/db-uludag/g3.jpg", "caption": "" },
+        { "src": "data/projects/db-uludag/g7.jpg", "caption": "" },
+        { "src": "data/projects/db-uludag/g4.jpg", "caption": "" },
+        { "src": "data/projects/db-uludag/g5.jpg", "caption": "" },
+        { "src": "data/projects/db-uludag/g6.jpg", "caption": "" }
+    ],
+    "body": [
+        "<p>I had my first computer when i was 4 years old. And we even had our internet connection back then 2006. Now come to think about it, i wonder where might that internet was coming from since we lived in an area without the under infrastructure. I might ask some questions about it to my parents...</p>",
+        "<p>I started playing games on my favorite websites of course. Since i didn't knew how to read and write yet, I was remembering which buttons on the keyboard to press that my parents did to go to that flash games websites. Also downloading and setting up games were so confusing for me. Even if i did achive to setup them properly, I didn't enjoyed playing them anyway. They were all in english. Thats why it took 10 years to complete on of my favorite game Ahriman's prophecy -_- Tho' it is another story.</p>",
+        "<p>A lof of years passed like that, then i became 12. It was enough! \"I played enough games\" i said. Now it was time for me to start developing my own games. I started with .NET Framework and C#. Not the greatest of the ideas when you want to develop games, but it was still super fun experience for me to explore around the coding. You write something, press play, and it does some stuff...</p>",
+        "<p>More about it soon</p>"
+    ]
+}

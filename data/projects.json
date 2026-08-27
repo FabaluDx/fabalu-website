@@ -86,6 +86,26 @@
         "hasPage": true
     },
     {
+        "slug": "project-yard",
+        "title": "The Project Yard",
+        "emoji": "🛠️",
+        "thumb": "data/projects/project-yard/thumb.jpg",
+        "date": "2022",
+        "role": "Solo build",
+        "blurb": "The industrial machine & part tracking system that i built for several construction companies",
+        "hasPage": false
+    },
+    {
+        "slug": "db-uludag",
+        "title": "DB Storage days - Uludag University",
+        "emoji": "🛠️",
+        "thumb": "data/projects/db-uludag/thumb.jpg",
+        "date": "2016",
+        "role": "Speaker",
+        "blurb": "The very first serious speech that i gave at Uludağ University about SQL Databases when i was 14 yo.",
+        "hasPage": true
+    },
+    {
         "slug": "iste-bu-parca",
         "title": "İşte Bu Parça!",
         "thumb": "data/projects/iste-bu-parca/thumb.jpg",

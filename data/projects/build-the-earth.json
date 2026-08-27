@@ -6,12 +6,15 @@
     "date": "2020 — now",
     "role": "Founder (TR branch) · Admin",
     "team": "BTE",
-    "hero": "",
+    "hero": "data/projects/build-the-earth/hero.jpg",
     "tags": ["community", "minecraft"],
     "links": [
         { "label": "Website", "url": "https://buildtheearth.net" }
     ],
     "specs": [],
     "gallery": [],
-    "body": ["<p></p>"]
+    "body": [
+        "<p>Everything started when a 17 yo Fabalu saw a YouTube video in 2020 by someone called PippenFTS.</p>",
+        "<p>That video was about what Fabalu already tought about like everyone as soon as he played a game called <b>Minecraft</b>. What if we build the whole world inside this blocky game and hang around inside it?</p>"
+    ]
 }
