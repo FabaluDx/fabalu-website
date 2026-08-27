@@ -57,9 +57,8 @@
         "date": "2022 - 2026",
         "role": "Core engineer → Technical Producer",
         "blurb": "One of five core engineers on a UGC game platform built from scratch. Sole author of the voxel engine, the in-app editor framework and the asset pipeline.",
-        "link": "https://theuniverse.now",
         "homeOrder": 1,
-        "hasPage": false
+        "hasPage": true
     },
     {
         "slug": "atilla",
