@@ -1,0 +1,1320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Project Editor — Fabalu's World</title>
+<style>
+:root{
+    --bg:#0e120e; --bg-soft:#141a14; --card:#1a221a; --card-hi:#202a20;
+    --line:rgba(255,255,255,.09); --text:#ecf1ec; --muted:#9aa89a;
+    --accent:#3ecc28; --accent-soft:rgba(46,166,28,.14);
+    --warn:#ffb454; --warn-soft:rgba(255,180,84,.13);
+    --bad:#ff6b5e; --bad-soft:rgba(255,107,94,.13);
+    --radius:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font:14px/1.5 'Segoe UI',system-ui,sans-serif;
+    background:var(--bg); color:var(--text); height:100vh; overflow:hidden;
+}
+button,input,textarea,select{font:inherit;color:inherit}
+
+.bar{
+    display:flex; align-items:center; gap:12px;
+    padding:0 16px; height:52px;
+    background:var(--bg-soft); border-bottom:1px solid var(--line);
+}
+.brand{font-weight:700; letter-spacing:.02em}
+.brand b{color:var(--accent)}
+.chip{
+    display:inline-block; margin-left:8px; padding:2px 8px; border-radius:999px;
+    background:var(--accent-soft); color:var(--accent);
+    font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+}
+.spacer{flex:1}
+.state{font-size:.82rem; color:var(--muted)}
+.state.ok{color:var(--accent)}
+.state.warn{color:var(--warn)}
+
+.btn{
+    padding:7px 13px; border:1px solid var(--line); border-radius:9px;
+    background:var(--card); cursor:pointer; transition:.15s;
+}
+.btn:hover:not(:disabled){background:var(--card-hi); border-color:rgba(255,255,255,.2)}
+.btn:disabled{opacity:.45; cursor:not-allowed}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:#0b1408; font-weight:700}
+.btn.primary:hover:not(:disabled){filter:brightness(1.1)}
+.btn.sm{padding:4px 9px; font-size:.8rem}
+.btn.danger:hover:not(:disabled){border-color:var(--bad); color:var(--bad)}
+
+.wrap{display:flex; height:calc(100vh - 52px)}
+.side{
+    width:290px; flex:0 0 290px; display:flex; flex-direction:column;
+    background:var(--bg-soft); border-right:1px solid var(--line);
+}
+.side-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 14px; border-bottom:1px solid var(--line);
+}
+.side-head strong{font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+.list{list-style:none; overflow-y:auto; flex:1; padding:8px}
+.row{
+    display:flex; align-items:center; gap:8px;
+    padding:9px 10px; margin-bottom:4px; border-radius:9px;
+    border:1px solid transparent; cursor:pointer;
+}
+.row:hover{background:var(--card)}
+.row.on{background:var(--card-hi); border-color:var(--accent)}
+.row .nm{flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.row .badges{display:flex; gap:3px; flex:0 0 auto}
+.bdg{
+    font-size:.58rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+    padding:2px 5px; border-radius:4px; background:var(--card-hi); color:var(--muted);
+}
+.bdg.home{background:var(--accent-soft); color:var(--accent)}
+.bdg.feat{background:var(--warn-soft); color:var(--warn)}
+.bdg.soon{background:var(--bad-soft); color:var(--bad)}
+.ord{display:flex; flex-direction:column; gap:1px}
+.ord button{
+    width:19px; height:14px; padding:0; line-height:1; font-size:.6rem;
+    border:1px solid var(--line); border-radius:4px; background:var(--card); cursor:pointer; color:var(--muted);
+}
+.ord button:hover{color:var(--accent); border-color:var(--accent)}
+.side-foot{padding:10px 14px; border-top:1px solid var(--line)}
+.hint{font-size:.75rem; color:var(--muted); line-height:1.5}
+
+.main{flex:1; display:flex; flex-direction:column; overflow:hidden}
+.tabs{display:flex; gap:4px; padding:10px 16px 0; border-bottom:1px solid var(--line); background:var(--bg-soft)}
+.tab{
+    padding:8px 15px; border:none; background:none; cursor:pointer;
+    color:var(--muted); border-bottom:2px solid transparent; margin-bottom:-1px;
+}
+.tab.on{color:var(--accent); border-bottom-color:var(--accent); font-weight:600}
+.panel{flex:1; overflow-y:auto; padding:22px 26px 60px}
+
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.f{margin-bottom:15px}
+.f > label{display:block; margin-bottom:5px; font-size:.76rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+.f input[type=text], .f input[type=url], .f textarea, .f select{
+    width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:9px;
+    background:var(--bg); outline:none;
+}
+.f input:focus, .f textarea:focus, .f select:focus{border-color:var(--accent)}
+.f textarea{resize:vertical; min-height:74px; font-family:ui-monospace,Consolas,monospace; font-size:.85rem}
+.f .sub{margin-top:5px; font-size:.74rem; color:var(--muted)}
+.check{display:flex; align-items:center; gap:9px; padding:9px 0; cursor:pointer}
+.check input{width:16px; height:16px; accent-color:var(--accent); cursor:pointer}
+h3.sec{
+    margin:26px 0 13px; padding-bottom:7px; border-bottom:1px solid var(--line);
+    font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent);
+}
+h3.sec:first-child{margin-top:0}
+.sec-head{display:flex; align-items:center; justify-content:space-between; margin:26px 0 13px; padding-bottom:7px; border-bottom:1px solid var(--line)}
+.sec-head h3{font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent)}
+
+.rep{display:flex; flex-direction:column; gap:8px}
+.rep-row{display:flex; gap:8px; align-items:flex-start}
+.rep-row input, .rep-row textarea{
+    flex:1; padding:8px 10px; border:1px solid var(--line); border-radius:8px; background:var(--bg); outline:none; min-width:0;
+}
+.rep-row textarea{min-height:70px; resize:vertical; font-family:ui-monospace,Consolas,monospace; font-size:.85rem}
+.rep-row input:focus, .rep-row textarea:focus{border-color:var(--accent)}
+.mini{
+    flex:0 0 auto; width:29px; height:33px; border:1px solid var(--line); border-radius:7px;
+    background:var(--card); cursor:pointer; color:var(--muted); line-height:1;
+}
+.mini:hover{background:var(--card-hi); color:var(--text)}
+.mini.x:hover{color:var(--bad); border-color:var(--bad)}
+
+.drop{
+    display:flex; align-items:center; gap:14px;
+    padding:12px; border:1.5px dashed var(--line); border-radius:var(--radius);
+    background:var(--bg); cursor:pointer; transition:.15s;
+}
+.drop:hover, .drop.over{border-color:var(--accent); background:var(--accent-soft)}
+.drop img{
+    width:150px; height:84px; object-fit:cover; border-radius:8px;
+    background:var(--card-hi); flex:0 0 auto;
+}
+.drop .meta{flex:1; min-width:0}
+.drop .meta b{display:block; margin-bottom:3px}
+.drop .meta span{font-size:.76rem; color:var(--muted); word-break:break-all}
+.gal-item{display:flex; gap:10px; align-items:flex-start; padding:9px; border:1px solid var(--line); border-radius:10px; background:var(--bg)}
+.gal-item img{width:112px; height:64px; object-fit:cover; border-radius:7px; background:var(--card-hi); flex:0 0 auto}
+.gal-item .col{flex:1; display:flex; flex-direction:column; gap:6px; min-width:0}
+.gal-item input{width:100%; padding:7px 9px; border:1px solid var(--line); border-radius:7px; background:var(--bg-soft); outline:none}
+.gal-item input:focus{border-color:var(--accent)}
+.gal-item .path{font-size:.7rem; color:var(--muted); word-break:break-all}
+.gal-btns{display:flex; flex-direction:column; gap:4px}
+
+.note{padding:10px 13px; border-radius:9px; margin-bottom:13px; font-size:.84rem; line-height:1.55}
+.note.warn{background:var(--warn-soft); border:1px solid rgba(255,180,84,.3); color:#ffd9a8}
+.note.bad{background:var(--bad-soft); border:1px solid rgba(255,107,94,.3); color:#ffc3bd}
+.note.info{background:var(--card); border:1px solid var(--line); color:var(--muted)}
+.note ul{margin:6px 0 0 18px}
+.toasts{position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:8px; z-index:99}
+.toast{
+    padding:11px 15px; border-radius:10px; background:var(--card-hi);
+    border:1px solid var(--line); box-shadow:0 10px 30px rgba(0,0,0,.5);
+    font-size:.85rem; max-width:400px; animation:in .2s ease;
+}
+.toast.ok{border-color:var(--accent); color:var(--accent)}
+.toast.bad{border-color:var(--bad); color:#ffc3bd}
+.toast.warn{border-color:var(--warn); color:#ffd9a8}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+
+.empty{display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center; padding:40px; gap:14px}
+.empty h2{font-size:1.3rem}
+.empty p{color:var(--muted); max-width:540px; line-height:1.7}
+.empty code{background:var(--card); padding:2px 7px; border-radius:5px; font-family:ui-monospace,Consolas,monospace; font-size:.85rem; color:var(--accent)}
+#preview{width:100%; height:100%; min-height:540px; border:1px solid var(--line); border-radius:var(--radius); background:var(--bg)}
+</style>
+</head>
+<body>
+
+<header class="bar">
+    <div class="brand">Fabalu <b>Project Editor</b><span class="chip">local</span></div>
+    <div class="spacer"></div>
+    <span id="repoState" class="state">not connected</span>
+    <button id="btnConnect" class="btn">Open repo folder…</button>
+    <button id="btnSave" class="btn primary" disabled>Save</button>
+</header>
+
+<div class="wrap">
+    <aside class="side">
+        <div class="side-head">
+            <strong>Projects</strong>
+            <button id="btnNew" class="btn sm" disabled>+ New</button>
+        </div>
+        <ol id="list" class="list"></ol>
+        <div class="side-foot">
+            <div class="hint">This order is the <b>Projects page</b> order. Use the arrows to change it.</div>
+        </div>
+    </aside>
+
+    <main class="main">
+        <div id="empty" class="empty">
+            <h2>Connect your repo folder to start</h2>
+            <p>
+                Click <b>Open repo folder…</b> and pick the site root — the folder containing
+                <code>index.html</code>. The editor reads and writes <code>data/projects.json</code>,
+                the per-project story files and <code>sitemap.xml</code> directly, so you just commit afterwards.
+            </p>
+            <p class="hint">
+                Serve this over localhost rather than opening it as a file. In Firefox/Safari the editor
+                falls back to downloading every file it would have written.
+            </p>
+        </div>
+
+        <div id="editor" hidden>
+            <nav class="tabs">
+                <button class="tab on" data-tab="card">Card</button>
+                <button class="tab" data-tab="story">Story page</button>
+                <button class="tab" data-tab="preview">Preview</button>
+            </nav>
+
+            <section class="panel" data-panel="card">
+                <div id="cardNotes"></div>
+                <h3 class="sec">Identity</h3>
+                <div class="grid2">
+                    <div class="f">
+                        <label for="fSlug">Slug</label>
+                        <input type="text" id="fSlug" placeholder="my-project">
+                        <div class="sub">URL and folder name. Lowercase letters, digits and dashes.</div>
+                    </div>
+                    <div class="f">
+                        <label for="fTitle">Title</label>
+                        <input type="text" id="fTitle" placeholder="My Project">
+                    </div>
+                </div>
+                <div class="grid2">
+                    <div class="f">
+                        <label for="fDate">Date</label>
+                        <input type="text" id="fDate" placeholder="2026">
+                    </div>
+                    <div class="f">
+                        <label for="fRole">Role</label>
+                        <input type="text" id="fRole" placeholder="Solo build">
+                    </div>
+                </div>
+                <div class="f">
+                    <label for="fBlurb">Blurb</label>
+                    <textarea id="fBlurb" placeholder="One or two sentences for the card."></textarea>
+                </div>
+                <div class="f">
+                    <label for="fTags">Tags</label>
+                    <input type="text" id="fTags" placeholder="unity, hardware, solo">
+                    <div class="sub">Comma separated. Only the first three show on the card.</div>
+                </div>
+
+                <h3 class="sec">Cover</h3>
+                <div class="f">
+                    <label>Thumbnail — 640×360, generated for you</label>
+                    <div class="drop" id="dropThumb">
+                        <img id="thumbPrev" alt="">
+                        <div class="meta">
+                            <b id="thumbLabel">Drop an image, or click to choose</b>
+                            <span id="thumbPath"></span>
+                        </div>
+                        <button class="btn sm danger" id="btnThumbClear" type="button">Remove</button>
+                    </div>
+                    <div class="sub">With no thumbnail the card falls back to the emoji below.</div>
+                </div>
+                <div class="grid2">
+                    <div class="f">
+                        <label for="fEmoji">Emoji fallback</label>
+                        <input type="text" id="fEmoji" placeholder="🛠️" maxlength="8">
+                    </div>
+                    <div class="f">
+                        <label for="fLink">External link</label>
+                        <input type="url" id="fLink" placeholder="https://…">
+                        <div class="sub">Used when there is no story page.</div>
+                    </div>
+                </div>
+
+                <h3 class="sec">Placement</h3>
+                <label class="check"><input type="checkbox" id="fHasPage"> Has its own story page</label>
+                <label class="check"><input type="checkbox" id="fHome"> Show on the landing page</label>
+                <label class="check"><input type="checkbox" id="fFeatured"> Featured — full-width row on the Projects page</label>
+                <div id="homeBox" style="margin-top:12px"></div>
+                <div style="margin-top:26px">
+                    <button class="btn danger" id="btnDelete">Delete this project…</button>
+                </div>
+            </section>
+
+            <section class="panel" data-panel="story" hidden>
+                <div id="storyBody"></div>
+            </section>
+
+            <section class="panel" data-panel="preview" hidden>
+                <iframe id="preview"></iframe>
+            </section>
+        </div>
+    </main>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script>
+'use strict';
+
+/* ------------------------------------------------------------------ helpers */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+function toast(msg, kind = '') {
+    const t = document.createElement('div');
+    t.className = 'toast ' + kind;
+    t.textContent = msg;
+    $('#toasts').appendChild(t);
+    setTimeout(() => t.remove(), kind === 'bad' ? 7000 : 3800);
+}
+
+function slugify(s) {
+    return (s || '').toLowerCase().trim()
+        .replace(/[ıİ]/g, 'i').replace(/[şŞ]/g, 's').replace(/[ğĞ]/g, 'g')
+        .replace(/[üÜ]/g, 'u').replace(/[öÖ]/g, 'o').replace(/[çÇ]/g, 'c')
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+/* Formats JSON the way these files are hand-written: 4-space indent, short
+   primitive arrays inline, one element per line otherwise. Keeps diffs small. */
+function fmtJSON(value, indent = 4) {
+    const pad = n => ' '.repeat(n);
+    const inline = x => {
+        if (x === null || typeof x !== 'object') return JSON.stringify(x);
+        if (Array.isArray(x)) return '[' + x.map(inline).join(', ') + ']';
+        return '{ ' + Object.entries(x)
+            .map(([k, v]) => JSON.stringify(k) + ': ' + inline(v)).join(', ') + ' }';
+    };
+    const walk = (x, depth) => {
+        const p = pad(depth * indent), p2 = pad((depth + 1) * indent);
+        if (x === null || typeof x !== 'object') return JSON.stringify(x);
+        if (Array.isArray(x)) {
+            if (!x.length) return '[]';
+            const allPrim = x.every(i => i === null || typeof i !== 'object');
+            const flat = inline(x);
+            if (allPrim && flat.length <= 100) return flat;
+            const rows = x.map(i => {
+                const s = inline(i);
+                return p2 + (s.length <= 200 ? s : walk(i, depth + 1));
+            });
+            return '[\n' + rows.join(',\n') + '\n' + p + ']';
+        }
+        const keys = Object.keys(x);
+        if (!keys.length) return '{}';
+        return '{\n' + keys.map(k => p2 + JSON.stringify(k) + ': ' + walk(x[k], depth + 1)).join(',\n') + '\n' + p + '}';
+    };
+    return walk(value, 0) + '\n';
+}
+
+/* ------------------------------------------------- directory handle storage */
+const IDB_DB = 'fabalu-editor', IDB_STORE = 'handles';
+function idb(mode, fn) {
+    return new Promise((res, rej) => {
+        const open = indexedDB.open(IDB_DB, 1);
+        open.onupgradeneeded = () => open.result.createObjectStore(IDB_STORE);
+        open.onerror = () => rej(open.error);
+        open.onsuccess = () => {
+            const tx = open.result.transaction(IDB_STORE, mode);
+            const req = fn(tx.objectStore(IDB_STORE));
+            req.onsuccess = () => res(req.result);
+            req.onerror = () => rej(req.error);
+        };
+    });
+}
+const saveHandle = h => idb('readwrite', s => s.put(h, 'root')).catch(() => {});
+const loadHandle = () => idb('readonly', s => s.get('root')).catch(() => null);
+
+/* ------------------------------------------------------------- file system */
+let ROOT = null;                 // FileSystemDirectoryHandle, or null in fallback mode
+const PENDING = new Map();       // path -> Blob, queued downloads when ROOT is null
+
+async function dirFor(path, create = false) {
+    const parts = path.split('/').filter(Boolean);
+    parts.pop();
+    let d = ROOT;
+    for (const p of parts) d = await d.getDirectoryHandle(p, { create });
+    return d;
+}
+const baseName = path => path.split('/').pop();
+
+async function readText(path) {
+    if (ROOT) {
+        const d = await dirFor(path);
+        const fh = await d.getFileHandle(baseName(path));
+        return (await fh.getFile()).text();
+    }
+    const r = await fetch('../' + path + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error(path + ' → HTTP ' + r.status);
+    return r.text();
+}
+
+async function fileExists(path) {
+    try { await readText(path); return true; } catch { return false; }
+}
+
+async function writeBlob(path, blob) {
+    if (!ROOT) { PENDING.set(path, blob); return; }
+    const d = await dirFor(path, true);
+    const fh = await d.getFileHandle(baseName(path), { create: true });
+    const w = await fh.createWritable();
+    await w.write(blob);
+    await w.close();
+}
+const writeText = (path, text) =>
+    writeBlob(path, new Blob([text], { type: 'application/json;charset=utf-8' }));
+
+function downloadPending() {
+    for (const [path, blob] of PENDING) {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = path.replace(/\//g, '_');
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    }
+    const n = PENDING.size;
+    PENDING.clear();
+    return n;
+}
+
+/* ------------------------------------------------------ image processing */
+const IMG_SPECS = {
+    thumb:   { w: 640, h: 360, mode: 'cover', quality: 0.86, label: 'card thumbnail' },
+    hero:    { maxW: 1600, minW: 1200, mode: 'fit', quality: 0.86, label: 'hero background' },
+    gallery: { maxW: 1400, minW: 800,  mode: 'fit', quality: 0.86, label: 'gallery image' }
+};
+
+async function processImage(file, kind) {
+    const spec = IMG_SPECS[kind];
+    const bmp = await createImageBitmap(file);
+    const warns = [];
+    let cw, ch;
+
+    if (spec.mode === 'cover') {
+        cw = spec.w; ch = spec.h;
+        if (bmp.width < spec.w || bmp.height < spec.h) {
+            warns.push('Source is ' + bmp.width + '×' + bmp.height + ' — the ' + spec.label +
+                ' needs ' + spec.w + '×' + spec.h + ', so it will be upscaled and look soft.');
+        }
+    } else {
+        const scale = Math.min(1, spec.maxW / bmp.width);
+        cw = Math.round(bmp.width * scale);
+        ch = Math.round(bmp.height * scale);
+        if (bmp.width < spec.minW) {
+            warns.push('Source is only ' + bmp.width + 'px wide — a ' + spec.label +
+                ' looks best at ' + spec.minW + 'px or more. It will look blurry when stretched.');
+        }
+    }
+
+    const c = document.createElement('canvas');
+    c.width = cw; c.height = ch;
+    const ctx = c.getContext('2d');
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+
+    if (spec.mode === 'cover') {
+        const s = Math.max(cw / bmp.width, ch / bmp.height);
+        const dw = bmp.width * s, dh = bmp.height * s;
+        ctx.drawImage(bmp, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+    } else {
+        ctx.drawImage(bmp, 0, 0, cw, ch);
+    }
+    bmp.close?.();
+
+    const blob = await new Promise(r => c.toBlob(r, 'image/jpeg', spec.quality));
+    return { blob, width: cw, height: ch, warns };
+}
+
+function pickFile(accept = 'image/*') {
+    return new Promise(res => {
+        const i = document.createElement('input');
+        i.type = 'file'; i.accept = accept;
+        i.onchange = () => res(i.files[0] || null);
+        i.click();
+    });
+}
+
+/* Wires a drop target: click to choose, or drag an image onto it. */
+function wireDrop(node, onFile) {
+    node.addEventListener('click', async e => {
+        if (e.target.closest('button')) return;
+        const f = await pickFile();
+        if (f) onFile(f);
+    });
+    node.addEventListener('dragover', e => { e.preventDefault(); node.classList.add('over'); });
+    node.addEventListener('dragleave', () => node.classList.remove('over'));
+    node.addEventListener('drop', e => {
+        e.preventDefault();
+        node.classList.remove('over');
+        const f = e.dataTransfer.files[0];
+        if (f && f.type.startsWith('image/')) onFile(f);
+        else if (f) toast('That is not an image file.', 'bad');
+    });
+}
+
+/* ------------------------------------------------------------------- state */
+let INDEX = [];                  // data/projects.json
+const DETAILS = new Map();       // slug -> detail object
+let sel = -1;                    // selected position in INDEX
+let indexDirty = false;
+const detailDirty = new Set();
+
+const cur = () => INDEX[sel] || null;
+const detailPath = slug => 'data/projects/' + slug + '.json';
+const assetDir = slug => 'data/projects/' + slug;
+
+function markIndex() { indexDirty = true; refreshSave(); }
+function markDetail(slug) { detailDirty.add(slug); refreshSave(); }
+function refreshSave() {
+    const n = (indexDirty ? 1 : 0) + detailDirty.size + PENDING.size;
+    $('#btnSave').disabled = n === 0;
+    $('#btnSave').textContent = n ? 'Save (' + n + ')' : 'Save';
+}
+
+/* Home slots are always kept contiguous 1..N, so the numbers never drift. */
+function homeList() {
+    return INDEX.filter(p => p.homeOrder).sort((a, b) => a.homeOrder - b.homeOrder);
+}
+function renumberHome() {
+    homeList().forEach((p, i) => { p.homeOrder = i + 1; });
+}
+
+/* ------------------------------------------------------------ sidebar list */
+function renderList() {
+    const ol = $('#list');
+    ol.innerHTML = '';
+    INDEX.forEach((p, i) => {
+        const li = document.createElement('li');
+        li.className = 'row' + (i === sel ? ' on' : '');
+
+        const ord = document.createElement('div');
+        ord.className = 'ord';
+        const up = document.createElement('button');   up.textContent = '▲'; up.title = 'Move up';
+        const dn = document.createElement('button');   dn.textContent = '▼'; dn.title = 'Move down';
+        up.onclick = e => { e.stopPropagation(); move(i, -1); };
+        dn.onclick = e => { e.stopPropagation(); move(i, 1); };
+        ord.append(up, dn);
+
+        const nm = document.createElement('div');
+        nm.className = 'nm';
+        nm.textContent = p.title || p.slug || '(untitled)';
+
+        const badges = document.createElement('div');
+        badges.className = 'badges';
+        if (p.featured) badges.append(mkBadge('★', 'feat', 'Featured'));
+        if (p.homeOrder) badges.append(mkBadge('H' + p.homeOrder, 'home', 'Landing page slot ' + p.homeOrder));
+        if (!p.hasPage && !p.link) badges.append(mkBadge('soon', 'soon', 'No destination yet'));
+
+        li.append(ord, nm, badges);
+        li.onclick = () => select(i);
+        ol.appendChild(li);
+    });
+}
+function mkBadge(text, cls, title) {
+    const s = document.createElement('span');
+    s.className = 'bdg ' + cls;
+    s.textContent = text;
+    s.title = title || '';
+    return s;
+}
+function move(i, dir) {
+    const j = i + dir;
+    if (j < 0 || j >= INDEX.length) return;
+    [INDEX[i], INDEX[j]] = [INDEX[j], INDEX[i]];
+    if (sel === i) sel = j; else if (sel === j) sel = i;
+    markIndex();
+    renderList();
+}
+
+/* ------------------------------------------------------------- card fields */
+const CARD_BIND = [
+    ['#fSlug', 'slug'], ['#fTitle', 'title'], ['#fDate', 'date'],
+    ['#fRole', 'role'], ['#fBlurb', 'blurb'], ['#fEmoji', 'emoji'], ['#fLink', 'link']
+];
+
+function fillCard() {
+    const p = cur();
+    if (!p) return;
+    CARD_BIND.forEach(([q, key]) => { $(q).value = p[key] || ''; });
+    $('#fTags').value = (p.tags || []).join(', ');
+    $('#fHasPage').checked = !!p.hasPage;
+    $('#fFeatured').checked = !!p.featured;
+    $('#fHome').checked = !!p.homeOrder;
+    fillThumb();
+    renderHomeBox();
+    renderCardNotes();
+}
+
+function fillThumb() {
+    const p = cur();
+    const img = $('#thumbPrev');
+    if (p.thumb) {
+        img.src = '../' + p.thumb + '?t=' + Date.now();
+        img.style.visibility = 'visible';
+        $('#thumbLabel').textContent = 'Thumbnail set — drop a new image to replace';
+        $('#thumbPath').textContent = p.thumb;
+        $('#btnThumbClear').hidden = false;
+    } else {
+        img.removeAttribute('src');
+        img.style.visibility = 'hidden';
+        $('#thumbLabel').textContent = 'Drop an image, or click to choose';
+        $('#thumbPath').textContent = 'No thumbnail — the emoji is used instead.';
+        $('#btnThumbClear').hidden = true;
+    }
+}
+
+function renderHomeBox() {
+    const box = $('#homeBox');
+    box.innerHTML = '';
+    const p = cur();
+    if (!p.homeOrder) return;
+
+    const list = homeList();
+    const at = list.findIndex(x => x === p);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'note info';
+    wrap.style.marginBottom = '0';
+
+    const label = document.createElement('div');
+    label.innerHTML = 'Landing page slot <b>' + p.homeOrder + '</b> of ' + list.length + ' — ';
+    const up = document.createElement('button');
+    up.className = 'btn sm'; up.textContent = '↑ earlier'; up.disabled = at <= 0;
+    const dn = document.createElement('button');
+    dn.className = 'btn sm'; dn.textContent = '↓ later'; dn.disabled = at >= list.length - 1;
+    dn.style.marginLeft = '6px';
+
+    up.onclick = () => shiftHome(-1);
+    dn.onclick = () => shiftHome(1);
+    label.append(up, dn);
+    wrap.appendChild(label);
+    box.appendChild(wrap);
+}
+function shiftHome(dir) {
+    const p = cur();
+    const list = homeList();
+    const at = list.findIndex(x => x === p);
+    const other = list[at + dir];
+    if (!other) return;
+    [p.homeOrder, other.homeOrder] = [other.homeOrder, p.homeOrder];
+    markIndex();
+    renderList(); renderHomeBox();
+}
+
+function renderCardNotes() {
+    const p = cur();
+    const box = $('#cardNotes');
+    box.innerHTML = '';
+    const issues = [];
+
+    if (!p.slug) issues.push(['bad', 'A slug is required.']);
+    else if (!/^[a-z0-9-]+$/.test(p.slug)) issues.push(['bad', 'Slug may only contain lowercase letters, digits and dashes.']);
+    if (INDEX.filter(x => x.slug === p.slug).length > 1) issues.push(['bad', 'Another project already uses this slug.']);
+    if (!p.title) issues.push(['bad', 'A title is required.']);
+    if (!p.thumb && !p.emoji) issues.push(['warn', 'No thumbnail and no emoji — the card cover will be blank.']);
+    if (!p.hasPage && !p.link) issues.push(['warn', 'No story page and no link, so this card shows a "story soon" badge and is not clickable.']);
+    if (p.featured && !p.thumb) issues.push(['warn', 'Featured cards are full-width; without a thumbnail that is a large empty block.']);
+
+    issues.forEach(([kind, msg]) => {
+        const d = document.createElement('div');
+        d.className = 'note ' + kind;
+        d.textContent = msg;
+        box.appendChild(d);
+    });
+}
+
+/* --------------------------------------------------------- story page tab */
+function blankDetail(p) {
+    return {
+        slug: p.slug, title: p.title, kicker: 'The Story of', subtitle: '',
+        date: p.date || '', role: p.role || '', team: '',
+        hero: '', tags: [...(p.tags || [])], links: [], specs: [], gallery: [], body: ['<p></p>']
+    };
+}
+
+async function loadDetail(slug) {
+    if (DETAILS.has(slug)) return DETAILS.get(slug);
+    let d;
+    try { d = JSON.parse(await readText(detailPath(slug))); }
+    catch { d = null; }
+    if (d) DETAILS.set(slug, d);
+    return d;
+}
+
+async function renderStory() {
+    const host = $('#storyBody');
+    host.innerHTML = '';
+    const p = cur();
+    if (!p) return;
+
+    if (!p.hasPage) {
+        host.innerHTML = '<div class="note info">This project has no story page. ' +
+            'Tick <b>Has its own story page</b> on the Card tab to create one.</div>';
+        return;
+    }
+
+    let d = await loadDetail(p.slug);
+    if (!d) {
+        d = blankDetail(p);
+        DETAILS.set(p.slug, d);
+        markDetail(p.slug);
+        toast('Started a new story page for ' + p.slug, 'ok');
+    }
+
+    const field = (labelText, key, placeholder) => {
+        const f = document.createElement('div');
+        f.className = 'f';
+        const l = document.createElement('label');
+        l.textContent = labelText;
+        const i = document.createElement('input');
+        i.type = 'text'; i.value = d[key] || ''; i.placeholder = placeholder || '';
+        i.oninput = () => { d[key] = i.value; markDetail(p.slug); };
+        f.append(l, i);
+        return f;
+    };
+
+    const h = t => { const x = document.createElement('h3'); x.className = 'sec'; x.textContent = t; return x; };
+
+    host.append(h('Header'));
+    const g1 = document.createElement('div'); g1.className = 'grid2';
+    g1.append(field('Title', 'title'), field('Kicker', 'kicker', 'The Story of'));
+    host.append(g1);
+    host.append(field('Subtitle', 'subtitle', 'One line under the title'));
+    const g2 = document.createElement('div'); g2.className = 'grid2';
+    g2.append(field('Date', 'date'), field('Role', 'role'));
+    host.append(g2);
+    host.append(field('Team', 'team', 'Team Bangu · funded by …'));
+
+    /* hero */
+    host.append(h('Hero image'));
+    const heroWrap = document.createElement('div');
+    heroWrap.className = 'f';
+    const heroDrop = document.createElement('div');
+    heroDrop.className = 'drop';
+    const heroImg = document.createElement('img');
+    const heroMeta = document.createElement('div');
+    heroMeta.className = 'meta';
+    const heroB = document.createElement('b');
+    const heroS = document.createElement('span');
+    heroMeta.append(heroB, heroS);
+    heroDrop.append(heroImg, heroMeta);
+    const paintHero = () => {
+        if (d.hero) {
+            heroImg.src = '../' + d.hero + '?t=' + Date.now();
+            heroImg.style.visibility = 'visible';
+            heroB.textContent = 'Hero set — drop a new image to replace';
+            heroS.textContent = d.hero;
+        } else {
+            heroImg.removeAttribute('src');
+            heroImg.style.visibility = 'hidden';
+            heroB.textContent = 'Drop the hero image, or click to choose';
+            heroS.textContent = 'Full-bleed background, 1200px wide or more.';
+        }
+    };
+    paintHero();
+    wireDrop(heroDrop, async file => {
+        const out = await processImage(file, 'hero');
+        const path = assetDir(p.slug) + '/hero.jpg';
+        await writeBlob(path, out.blob);
+        d.hero = path;
+        markDetail(p.slug); refreshSave();
+        out.warns.forEach(w => toast(w, 'warn'));
+        toast('Hero written at ' + out.width + '×' + out.height, 'ok');
+        paintHero();
+    });
+    heroWrap.append(heroDrop);
+    host.append(heroWrap);
+
+    /* repeaters */
+    host.append(repeaterSection('Tags', d, 'tags', 'string', p.slug, 'A tag'));
+    host.append(repeaterSection('Links', d, 'links', 'link', p.slug));
+    host.append(repeaterSection('Specs', d, 'specs', 'pair', p.slug));
+    host.append(gallerySection(d, p));
+    host.append(repeaterSection('Body', d, 'body', 'html', p.slug));
+}
+
+/* Generic list editor. kind: string | pair | link | html */
+function repeaterSection(title, d, key, kind, slug, ph) {
+    const wrap = document.createElement('div');
+    const head = document.createElement('div');
+    head.className = 'sec-head';
+    const h3 = document.createElement('h3');
+    h3.textContent = title;
+    const add = document.createElement('button');
+    add.className = 'btn sm';
+    add.textContent = '+ Add';
+    head.append(h3, add);
+    wrap.append(head);
+
+    const rep = document.createElement('div');
+    rep.className = 'rep';
+    wrap.append(rep);
+
+    if (!Array.isArray(d[key])) d[key] = [];
+
+    const blank = () => kind === 'pair' ? ['', '']
+        : kind === 'link' ? { label: '', url: '' }
+        : kind === 'html' ? '<p></p>' : '';
+
+    const draw = () => {
+        rep.innerHTML = '';
+        if (!d[key].length) {
+            const e = document.createElement('div');
+            e.className = 'hint';
+            e.textContent = 'Nothing yet.';
+            rep.append(e);
+        }
+        d[key].forEach((item, i) => {
+            const row = document.createElement('div');
+            row.className = 'rep-row';
+            const touch = () => { markDetail(slug); };
+
+            if (kind === 'pair') {
+                const a = document.createElement('input');
+                a.value = item[0] || ''; a.placeholder = 'Label';
+                a.style.flex = '0 0 32%';
+                a.oninput = () => { item[0] = a.value; touch(); };
+                const b = document.createElement('input');
+                b.value = item[1] || ''; b.placeholder = 'Value';
+                b.oninput = () => { item[1] = b.value; touch(); };
+                row.append(a, b);
+            } else if (kind === 'link') {
+                const a = document.createElement('input');
+                a.value = item.label || ''; a.placeholder = 'Label';
+                a.style.flex = '0 0 32%';
+                a.oninput = () => { item.label = a.value; touch(); };
+                const b = document.createElement('input');
+                b.value = item.url || ''; b.placeholder = 'https://…';
+                b.oninput = () => { item.url = b.value; touch(); };
+                row.append(a, b);
+            } else if (kind === 'html') {
+                const t = document.createElement('textarea');
+                t.value = item; t.placeholder = '<p>…</p>';
+                t.oninput = () => { d[key][i] = t.value; touch(); };
+                row.append(t);
+            } else {
+                const a = document.createElement('input');
+                a.value = item; a.placeholder = ph || '';
+                a.oninput = () => { d[key][i] = a.value; touch(); };
+                row.append(a);
+            }
+
+            const up = document.createElement('button');
+            up.className = 'mini'; up.textContent = '▲'; up.title = 'Move up';
+            up.onclick = () => { if (i > 0) { [d[key][i - 1], d[key][i]] = [d[key][i], d[key][i - 1]]; touch(); draw(); } };
+            const dn = document.createElement('button');
+            dn.className = 'mini'; dn.textContent = '▼'; dn.title = 'Move down';
+            dn.onclick = () => { if (i < d[key].length - 1) { [d[key][i + 1], d[key][i]] = [d[key][i], d[key][i + 1]]; touch(); draw(); } };
+            const rm = document.createElement('button');
+            rm.className = 'mini x'; rm.textContent = '✕'; rm.title = 'Remove';
+            rm.onclick = () => { d[key].splice(i, 1); touch(); draw(); };
+            row.append(up, dn, rm);
+            rep.append(row);
+        });
+    };
+    add.onclick = () => { d[key].push(blank()); markDetail(slug); draw(); };
+    draw();
+    return wrap;
+}
+
+function gallerySection(d, p) {
+    const wrap = document.createElement('div');
+    const head = document.createElement('div');
+    head.className = 'sec-head';
+    const h3 = document.createElement('h3');
+    h3.textContent = 'Gallery';
+    const add = document.createElement('button');
+    add.className = 'btn sm';
+    add.textContent = '+ Add image';
+    head.append(h3, add);
+    wrap.append(head);
+
+    const rep = document.createElement('div');
+    rep.className = 'rep';
+    wrap.append(rep);
+    if (!Array.isArray(d.gallery)) d.gallery = [];
+
+    const nextName = () => {
+        let n = 1;
+        const used = new Set(d.gallery.map(g => (g.src || '').split('/').pop()));
+        while (used.has('g' + n + '.jpg')) n++;
+        return 'g' + n + '.jpg';
+    };
+
+    const draw = () => {
+        rep.innerHTML = '';
+        if (!d.gallery.length) {
+            const e = document.createElement('div');
+            e.className = 'hint';
+            e.textContent = 'No gallery images yet.';
+            rep.append(e);
+        }
+        d.gallery.forEach((g, i) => {
+            const item = document.createElement('div');
+            item.className = 'gal-item';
+            const img = document.createElement('img');
+            if (g.src) img.src = '../' + g.src + '?t=' + Date.now();
+            img.title = 'Click to replace';
+
+            const col = document.createElement('div');
+            col.className = 'col';
+            const cap = document.createElement('input');
+            cap.value = g.caption || ''; cap.placeholder = 'Caption';
+            cap.oninput = () => { g.caption = cap.value; markDetail(p.slug); };
+            const path = document.createElement('div');
+            path.className = 'path';
+            path.textContent = g.src || '(no file yet — click the tile to add one)';
+            col.append(cap, path);
+
+            const btns = document.createElement('div');
+            btns.className = 'gal-btns';
+            const up = document.createElement('button');
+            up.className = 'mini'; up.textContent = '▲';
+            up.onclick = () => { if (i > 0) { [d.gallery[i - 1], d.gallery[i]] = [d.gallery[i], d.gallery[i - 1]]; markDetail(p.slug); draw(); } };
+            const dn = document.createElement('button');
+            dn.className = 'mini'; dn.textContent = '▼';
+            dn.onclick = () => { if (i < d.gallery.length - 1) { [d.gallery[i + 1], d.gallery[i]] = [d.gallery[i], d.gallery[i + 1]]; markDetail(p.slug); draw(); } };
+            const rm = document.createElement('button');
+            rm.className = 'mini x'; rm.textContent = '✕';
+            rm.onclick = () => { d.gallery.splice(i, 1); markDetail(p.slug); draw(); };
+            btns.append(up, dn, rm);
+
+            const take = async file => {
+                const out = await processImage(file, 'gallery');
+                const name = g.src ? g.src.split('/').pop() : nextName();
+                const dest = assetDir(p.slug) + '/' + name;
+                await writeBlob(dest, out.blob);
+                g.src = dest;
+                markDetail(p.slug); refreshSave();
+                out.warns.forEach(w => toast(w, 'warn'));
+                toast('Wrote ' + name + ' at ' + out.width + '×' + out.height, 'ok');
+                draw();
+            };
+            img.onclick = async () => { const f = await pickFile(); if (f) take(f); };
+            item.ondragover = e => { e.preventDefault(); item.style.borderColor = 'var(--accent)'; };
+            item.ondragleave = () => { item.style.borderColor = ''; };
+            item.ondrop = e => {
+                e.preventDefault(); item.style.borderColor = '';
+                const f = e.dataTransfer.files[0];
+                if (f && f.type.startsWith('image/')) take(f);
+            };
+
+            item.append(img, col, btns);
+            rep.append(item);
+        });
+    };
+    add.onclick = () => { d.gallery.push({ src: '', caption: '' }); markDetail(p.slug); draw(); };
+    draw();
+    return wrap;
+}
+
+/* ------------------------------------------------------------------ preview */
+function renderPreview() {
+    const p = cur();
+    if (!p) return;
+    const esc = s => String(s == null ? '' : s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+    const soon = !p.hasPage && !p.link;
+    const tags = (p.tags || []).slice(0, 3).map(t => '<span class="tag">' + esc(t) + '</span>').join('');
+    const cover = p.thumb
+        ? '<div class="thumb"><img src="../' + esc(p.thumb) + '" alt="">' +
+          (soon ? '<span class="soon-badge">story soon</span>' : '') + '</div>'
+        : '<div class="thumb no-image">' + esc(p.emoji || '📦') +
+          (soon ? '<span class="soon-badge">story soon</span>' : '') + '</div>';
+    const read = p.hasPage ? 'read the story <i class="fas fa-arrow-right"></i>'
+        : p.link ? 'visit <i class="fas fa-arrow-up-right-from-square"></i>'
+        : '<span class="muted-read">story soon</span>';
+
+    const card =
+        '<a class="project-link">' +
+        '<div class="card visible' + (p.featured ? ' featured' : '') + (soon ? ' is-soon' : '') + '">' +
+        cover +
+        '<div class="body">' +
+        '<div class="tags">' + tags + '</div>' +
+        '<span class="story-of">The Story of</span>' +
+        '<h3 class="header">' + esc(p.title) + '</h3>' +
+        '<span class="card-role">' + esc(p.role || '') + '</span>' +
+        '<p class="excerpt">' + esc(p.blurb || '') + '</p>' +
+        '<div class="meta">' +
+        '<span class="date-wrap"><i class="fas fa-calendar"></i><span class="date"> ' + esc(p.date || '') + '</span></span>' +
+        '<span class="read">' + read + '</span>' +
+        '</div></div></div></a>';
+
+    $('#preview').srcdoc =
+        '<!doctype html><html><head><meta charset="utf-8">' +
+        '<link rel="stylesheet" href="../css/style.css">' +
+        '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">' +
+        '<style>body{background:#0e120e;padding:24px;margin:0}' +
+        '.post-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;max-width:1052px}' +
+        '.card.featured{grid-column:1/-1;width:100%}</style>' +
+        '</head><body class="page-projects"><div class="post-grid">' + card + '</div></body></html>';
+}
+
+/* ------------------------------------------------------------- select / new */
+function select(i) {
+    sel = i;
+    $('#editor').hidden = false;
+    $('#empty').style.display = 'none';
+    $('#editor').style.display = 'flex';
+    $('#editor').style.flexDirection = 'column';
+    $('#editor').style.height = '100%';
+    renderList();
+    fillCard();
+    const active = $('.tab.on')?.dataset.tab;
+    if (active === 'story') renderStory();
+    if (active === 'preview') renderPreview();
+}
+
+function newProject() {
+    const p = {
+        slug: '', title: 'Untitled project', emoji: '🛠️',
+        tags: [], date: String(new Date().getFullYear()),
+        role: '', blurb: '', hasPage: false
+    };
+    INDEX.push(p);
+    markIndex();
+    select(INDEX.length - 1);
+    $('#fTitle').focus();
+    $('#fTitle').select();
+    toast('Added a project — give it a slug and a title.', 'ok');
+}
+
+/* ------------------------------------------------------------------- sitemap */
+function buildSitemap() {
+    const url = (loc, freq, pri) =>
+        '    <url>\n        <loc>' + loc + '</loc>\n' +
+        '        <changefreq>' + freq + '</changefreq>\n' +
+        '        <priority>' + pri + '</priority>\n    </url>';
+    const rows = [
+        url('https://fabalu.xyz/', 'weekly', '1.0'),
+        url('https://fabalu.xyz/projects.html', 'weekly', '0.9')
+    ];
+    INDEX.filter(p => p.hasPage && p.slug).forEach(p => {
+        rows.push(url('https://fabalu.xyz/project.html?p=' + p.slug, 'monthly', p.featured ? '0.8' : '0.7'));
+    });
+    rows.push(url('https://fabalu.xyz/scratches.html', 'monthly', '0.4'));
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' +
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+        rows.join('\n') + '\n</urlset>\n';
+}
+
+/* --------------------------------------------------------------------- save */
+function validateAll() {
+    const errs = [];
+    const seen = new Set();
+    INDEX.forEach((p, i) => {
+        const who = p.title || p.slug || ('#' + (i + 1));
+        if (!p.slug) errs.push(who + ': missing slug');
+        else if (!/^[a-z0-9-]+$/.test(p.slug)) errs.push(who + ': invalid slug "' + p.slug + '"');
+        else if (seen.has(p.slug)) errs.push('duplicate slug "' + p.slug + '"');
+        seen.add(p.slug);
+        if (!p.title) errs.push(who + ': missing title');
+    });
+    return errs;
+}
+
+/* Writes the card entry with keys in the order the existing file uses. */
+function cleanEntry(p) {
+    const out = {};
+    const put = (k, v) => { if (v !== undefined && v !== null && v !== '' && !(Array.isArray(v) && !v.length)) out[k] = v; };
+    put('slug', p.slug);
+    put('title', p.title);
+    put('emoji', p.emoji);
+    put('thumb', p.thumb);
+    put('tags', (p.tags || []).filter(Boolean));
+    put('date', p.date);
+    put('role', p.role);
+    put('blurb', p.blurb);
+    put('link', p.link);
+    if (p.featured) out.featured = true;
+    if (p.homeOrder) out.homeOrder = p.homeOrder;
+    out.hasPage = !!p.hasPage;
+    return out;
+}
+
+function cleanDetail(d) {
+    const out = { ...d };
+    out.tags = (out.tags || []).filter(Boolean);
+    out.links = (out.links || []).filter(l => l && (l.url || l.label));
+    out.specs = (out.specs || []).filter(s => s && (s[0] || s[1]));
+    out.gallery = (out.gallery || []).filter(g => g && g.src);
+    out.body = (out.body || []).filter(b => b && b.trim());
+    return out;
+}
+
+async function save() {
+    const errs = validateAll();
+    if (errs.length) {
+        toast('Fix these first — ' + errs.join('; '), 'bad');
+        return;
+    }
+    const btn = $('#btnSave');
+    btn.disabled = true;
+    btn.textContent = 'Saving…';
+    const written = [];
+
+    try {
+        renumberHome();
+
+        for (const slug of detailDirty) {
+            const d = DETAILS.get(slug);
+            if (!d) continue;
+            d.slug = slug;
+            await writeText(detailPath(slug), fmtJSON(cleanDetail(d)));
+            written.push(detailPath(slug));
+        }
+        detailDirty.clear();
+
+        if (indexDirty) {
+            await writeText('data/projects.json', fmtJSON(INDEX.map(cleanEntry)));
+            written.push('data/projects.json');
+            await writeText('sitemap.xml', buildSitemap());
+            written.push('sitemap.xml');
+        }
+        indexDirty = false;
+
+        if (!ROOT && PENDING.size) {
+            const n = downloadPending();
+            toast('Downloaded ' + n + ' file(s) — move them into the repo.', 'warn');
+        }
+        toast('Saved: ' + written.join(', '), 'ok');
+    } catch (e) {
+        console.error(e);
+        toast('Save failed: ' + e.message, 'bad');
+    }
+    renderList();
+    refreshSave();
+}
+
+/* --------------------------------------------------------------- connecting */
+async function useRoot(handle) {
+    ROOT = handle;
+    await loadAll();
+    $('#repoState').textContent = 'connected · ' + handle.name;
+    $('#repoState').className = 'state ok';
+    $('#btnNew').disabled = false;
+}
+
+async function connect() {
+    if (!window.showDirectoryPicker) {
+        toast('This browser cannot write files directly — running in download mode.', 'warn');
+        ROOT = null;
+        try {
+            await loadAll();
+            $('#repoState').textContent = 'download mode (read-only source)';
+            $('#repoState').className = 'state warn';
+            $('#btnNew').disabled = false;
+        } catch (e) {
+            toast('Could not read data/projects.json over HTTP: ' + e.message, 'bad');
+        }
+        return;
+    }
+    try {
+        const h = await window.showDirectoryPicker({ mode: 'readwrite' });
+        try { await h.getFileHandle('index.html'); }
+        catch {
+            toast('That folder has no index.html — pick the site root.', 'bad');
+            return;
+        }
+        await saveHandle(h);
+        await useRoot(h);
+        toast('Connected to ' + h.name, 'ok');
+    } catch (e) {
+        if (e.name !== 'AbortError') toast('Could not open folder: ' + e.message, 'bad');
+    }
+}
+
+async function loadAll() {
+    INDEX = JSON.parse(await readText('data/projects.json'));
+    DETAILS.clear();
+    detailDirty.clear();
+    indexDirty = false;
+    sel = -1;
+    renderList();
+    refreshSave();
+    if (INDEX.length) select(0);
+    await auditImages();
+}
+
+/* One-off report so undersized art is visible without hunting for it. */
+async function auditImages() {
+    const small = [];
+    for (const p of INDEX) {
+        if (!p.hasPage) continue;
+        const d = await loadDetail(p.slug);
+        if (d && d.hero) {
+            const dim = await imgSize('../' + d.hero);
+            if (dim && dim.w < IMG_SPECS.hero.minW) small.push(p.slug + ' hero (' + dim.w + '×' + dim.h + ')');
+        }
+    }
+    if (small.length) toast('Undersized hero images: ' + small.join(', '), 'warn');
+}
+function imgSize(src) {
+    return new Promise(res => {
+        const i = new Image();
+        i.onload = () => res({ w: i.naturalWidth, h: i.naturalHeight });
+        i.onerror = () => res(null);
+        i.src = src;
+    });
+}
+
+/* ------------------------------------------------------------------- events */
+CARD_BIND.forEach(([q, key]) => {
+    $(q).addEventListener('input', () => {
+        const p = cur();
+        if (!p) return;
+        p[key] = $(q).value;
+        markIndex();
+        if (key === 'title' || key === 'slug') renderList();
+        renderCardNotes();
+    });
+});
+$('#fSlug').addEventListener('blur', () => {
+    const p = cur();
+    if (!p) return;
+    if (!p.slug && p.title) { p.slug = slugify(p.title); $('#fSlug').value = p.slug; markIndex(); renderList(); }
+    else if (p.slug && p.slug !== slugify(p.slug)) {
+        p.slug = slugify(p.slug);
+        $('#fSlug').value = p.slug;
+        markIndex();
+        toast('Slug tidied to "' + p.slug + '"');
+    }
+    renderCardNotes();
+});
+$('#fTags').addEventListener('input', () => {
+    const p = cur();
+    if (!p) return;
+    p.tags = $('#fTags').value.split(',').map(s => s.trim()).filter(Boolean);
+    markIndex();
+});
+$('#fHasPage').addEventListener('change', e => {
+    const p = cur();
+    p.hasPage = e.target.checked;
+    markIndex(); renderList(); renderCardNotes();
+});
+$('#fFeatured').addEventListener('change', e => {
+    const p = cur();
+    if (e.target.checked) INDEX.forEach(x => { if (x !== p) delete x.featured; });
+    p.featured = e.target.checked || undefined;
+    if (!p.featured) delete p.featured;
+    markIndex(); renderList(); renderCardNotes();
+});
+$('#fHome').addEventListener('change', e => {
+    const p = cur();
+    if (e.target.checked) p.homeOrder = homeList().length + 1;
+    else delete p.homeOrder;
+    renumberHome();
+    markIndex(); renderList(); renderHomeBox();
+});
+
+wireDrop($('#dropThumb'), async file => {
+    const p = cur();
+    if (!p.slug) { toast('Give the project a slug first.', 'bad'); return; }
+    const out = await processImage(file, 'thumb');
+    const path = assetDir(p.slug) + '/thumb.jpg';
+    await writeBlob(path, out.blob);
+    p.thumb = path;
+    markIndex(); refreshSave();
+    out.warns.forEach(w => toast(w, 'warn'));
+    toast('Thumbnail written at 640×360', 'ok');
+    fillThumb(); renderCardNotes();
+});
+$('#btnThumbClear').addEventListener('click', e => {
+    e.stopPropagation();
+    const p = cur();
+    delete p.thumb;
+    markIndex(); fillThumb(); renderCardNotes();
+});
+
+$('#btnDelete').addEventListener('click', () => {
+    const p = cur();
+    if (!confirm('Remove "' + (p.title || p.slug) + '" from projects.json?\n\nImage files and the story JSON stay on disk; delete those yourself if you want them gone.')) return;
+    INDEX.splice(sel, 1);
+    renumberHome();
+    markIndex();
+    sel = Math.min(sel, INDEX.length - 1);
+    if (sel < 0) { $('#editor').hidden = true; $('#empty').style.display = 'flex'; }
+    else select(sel);
+    renderList();
+});
+
+$$('.tab').forEach(t => t.addEventListener('click', () => {
+    $$('.tab').forEach(x => x.classList.remove('on'));
+    t.classList.add('on');
+    $$('.panel').forEach(pn => { pn.hidden = pn.dataset.panel !== t.dataset.tab; });
+    if (t.dataset.tab === 'story') renderStory();
+    if (t.dataset.tab === 'preview') renderPreview();
+}));
+
+$('#btnConnect').addEventListener('click', connect);
+$('#btnSave').addEventListener('click', save);
+$('#btnNew').addEventListener('click', newProject);
+
+document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); if (!$('#btnSave').disabled) save(); }
+});
+window.addEventListener('beforeunload', e => {
+    if (indexDirty || detailDirty.size) { e.preventDefault(); e.returnValue = ''; }
+});
+
+/* Reconnect to the folder picked last time, if permission is still granted. */
+(async () => {
+    const h = await loadHandle();
+    if (!h) return;
+    try {
+        if (await h.queryPermission({ mode: 'readwrite' }) === 'granted') {
+            await useRoot(h);
+            toast('Reconnected to ' + h.name, 'ok');
+        } else {
+            $('#repoState').textContent = 'click connect to reopen ' + h.name;
+        }
+    } catch { /* handle went stale */ }
+})();
+</script>
+</body>
+</html>

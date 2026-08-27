@@ -1,0 +1,17 @@
+{
+    "slug": "grizzly-bear",
+    "title": "Grizzly Bear — Smart Home Systems",
+    "kicker": "The Story of",
+    "subtitle": "A childhood dream come true",
+    "date": "2016 — 2019",
+    "role": "Founder · Solo build",
+    "team": "FabaluSoftware",
+    "hero": "data/projects/grizzly-bear/hero.jpg",
+    "tags": ["iot", "hardware", "fullstack"],
+    "links": [],
+    "specs": [],
+    "gallery": [
+        { "src": "data/projects/grizzly-bear/g1.jpg", "caption": "The Hub page hosted on a NodeMCU 1.3" }
+    ],
+    "body": ["<p></p>"]
+}

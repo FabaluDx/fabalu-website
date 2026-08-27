@@ -1,0 +1,25 @@
+{
+    "slug": "intergalacticorp",
+    "title": "INTERGALACTICORP.",
+    "kicker": "The Story of",
+    "subtitle": "",
+    "date": "2024",
+    "role": "Co-founder",
+    "team": "Nuke The Boss",
+    "hero": "data/projects/intergalacticorp/hero.jpg",
+    "tags": ["steam", "co-founder", "game"],
+    "links": [
+        { "label": "Steam Page", "url": "https://store.steampowered.com/app/3070720/INTERGALACTICORP/" }
+    ],
+    "specs": [],
+    "gallery": [
+        { "src": "data/projects/intergalacticorp/g1.jpg", "caption": "A normal picture that shows the shadow of a part of the Robot Miner" },
+        { "src": "data/projects/intergalacticorp/g2.jpg", "caption": "The Core Drill's first concept by me" },
+        { "src": "data/projects/intergalacticorp/g3.jpg", "caption": "Placeholder guns, ready to polish" },
+        { "src": "data/projects/intergalacticorp/g4.jpg", "caption": "Mineral Generation from outside view" },
+        { "src": "data/projects/intergalacticorp/g6.jpg", "caption": "The formula of something that i don't remember now" },
+        { "src": "data/projects/intergalacticorp/g5.jpg", "caption": "The main team" },
+        { "src": "data/projects/intergalacticorp/g7.jpg", "caption": "Single mine distribution perlin" }
+    ],
+    "body": ["<p></p>"]
+}

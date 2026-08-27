@@ -1,8 +1,13 @@
 // Projects grid — blog-style cards that link out to full project pages.
+// Both the archive (projects.html) and the landing page render from data/projects.json.
+// The landing page marks its grid with data-mode="home": it shows only the entries
+// that carry a "homeOrder" number, in that order.
 
 const grid = document.querySelector('.post-grid');
 const template = document.getElementById('project-card');
 const emptyState = document.querySelector('.empty-state');
+
+const isHome = grid?.dataset.mode === 'home';
 
 window.onload = () => {
     fetch('data/projects.json')
@@ -19,8 +24,12 @@ window.onload = () => {
 };
 
 function render(projects) {
-    if (!projects || !projects.length) { emptyState.hidden = false; return; }
-    projects.forEach(makeCard);
+    const list = isHome
+        ? (projects || []).filter((p) => p.homeOrder).sort((a, b) => a.homeOrder - b.homeOrder)
+        : (projects || []);
+
+    if (!list.length) { emptyState.hidden = false; return; }
+    list.forEach(makeCard);
     revealOnScroll();
 }
 
@@ -41,10 +50,11 @@ function makeCard(p) {
         link.style.cursor = 'default';
     }
 
-    if (p.featured) { card.classList.add('featured'); }
+    // the full-width hero treatment belongs to the archive page; home stays an even grid
+    if (p.featured && !isHome) { card.classList.add('featured'); }
 
-    // anything without its own story page yet gets a "soon" marker
-    const soon = !p.hasPage;
+    // "soon" means there's nowhere to go yet — a card that links out is not soon
+    const soon = !p.hasPage && !p.link;
     if (soon) { card.classList.add('is-soon'); }
 
     // thumb: real image or emoji gradient cover
