@@ -26,12 +26,12 @@
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://fabalu.xyz/project.html?p=grizzly-bear</loc>
+        <loc>https://fabalu.xyz/project.html?p=universe-platform</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://fabalu.xyz/project.html?p=universe-platform</loc>
+        <loc>https://fabalu.xyz/project.html?p=grizzly-bear</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
